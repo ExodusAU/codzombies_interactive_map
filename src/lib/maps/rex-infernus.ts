@@ -1465,12 +1465,23 @@ export const rexInfernus: MapData = {
               locations: [{ position: { x: 54.8, y: 80.1 } }],
             },
             {
-              id: "s3-upgrade-grapple",
-              title: "Upgrade the Grapple",
+              // Lives here rather than with the other Shadowsmith steps: the
+              // pool it opens is where the Eye of the Forge goes, so it has to
+              // be done before the grapple upgrade below.
+              id: "s3-veytharion-cube-puzzle",
+              title: "Veytharion: Solve the Cube Puzzle",
               instruction:
-                "- Answer the phone in Her House to reveal the portal back to the main map.\n- Take the Eye back into the main map.\n- Find one of the green grapple altars/stations near Pack-a-Punch.\n- Interact with it and place the Eye of the Forge.\n- Take the grapple from **that exact same station**.\n\n**Do not pick up a grapple anywhere else afterwards.** Community testing suggests grabbing one from a different station can stop the upgraded grapple interactions working. Go straight from this station to Pack-a-Punch.",
+                "**Do this early.** It can be solved any time from the start, and the next step needs it finished — the pool it opens is where the Eye of the Forge goes.\n\n**Find the four elemental cubes**\n\n- **Fire** — on top of a window in Veytharion Sanctuary, next to Mule Kick. Wall-jump to bring it down.\n- **Hand** — on the edge of Veytharion Sanctuary.\n- **Water** — on top of a column in Veytharion Main Chamber, next to a GobbleGum machine.\n- **Plant/Leaf** — near a window in Veytharion Sanctuary, by the four pillars.\n\n**Sources disagree on which perk helps spot them:** our run used Death Perception; the community guide credits Vulture Aid. Either is worth having.\n\n**Solve the puzzle**\n\nThe floor inscription is the whole rule: **fire cannot touch water or leaf/grass.** The Hand is your safe separator, so this is a river-crossing puzzle — never leave fire alone with water or leaf on either side.\n\n- Take Fire + Hand across.\n- Drop Fire on the far side, keep Hand on the transport.\n- Send Hand back.\n- Take Hand + Water across.\n- Rearrange so Hand still sits between the incompatible cubes.\n- Bring Hand back.\n- Take Leaf across, again using Hand as the separator.\n- Finally bring Fire across, keeping Hand between Fire and Water/Leaf.\n\nWhen all four are across, the wall opens and reveals a hidden area with the blue **Soul/Galaxy Pool** and a Mystery Perk machine.",
               solidMarkers: true,
-              locations: [{ position: { x: 57.3, y: 50.5 } }],
+              locations: [{ position: { x: 37.5, y: 39.4 } }],
+            },
+            {
+              id: "s3-upgrade-grapple",
+              title: "Upgrade the Grapple at Veytharion's Pool",
+              instruction:
+                "**Corrected route — the Eye does not go into a green grapple station.** Earlier guides (ours included) said to place the Eye at a green grapple altar near Pack-a-Punch. That is wrong. The Eye goes into Veytharion's blue pool.\n\n- Answer the phone in Her House to reveal the portal back to the main map.\n- Carry the Eye of the Forge back into the main map.\n- Go into Veytharion's chamber, to the blue Soul/Galaxy Pool opened by the cube puzzle.\n- Interact with the pool while carrying the Eye to place it in.\n- The grapple station inside Veytharion's chamber turns from **green to red**.\n- Take that red grapple.\n\nThe red grapple is the upgraded one. Everything in the next stage — ripping the Forge covers open, moving purple orbs — needs it.\n\n**If the pool will not take the Eye,** the cube puzzle is not finished; that area only opens once all four cubes are across.",
+              solidMarkers: true,
+              locations: [{ position: { x: 37.5, y: 39.4 } }],
             },
           ],
         },
@@ -1482,7 +1493,7 @@ export const rexInfernus: MapData = {
               id: "s4-rip-eye-panels",
               title: "Rip the Eye Panels off Pack-a-Punch",
               instruction:
-                "- Go to Pack-a-Punch.\n- Look around the structure above and below it, including the Nexus Core.\n- You will see square eye-symbol panels/tiles.\n- Grapple them with the upgraded grapple.\n- They rip away, exposing web-covered mechanisms underneath.\n\n**If the panels will not come off,** you are almost certainly not holding the grapple from the station where you inserted the Eye. Go back and take that one.",
+                "Carrying the **red grapple** from Veytharion's pool:\n\n- Go to Pack-a-Punch.\n- Look around the structure above and below it, including the Nexus Core.\n- You will see square eye-symbol panels/tiles.\n- Grapple them to rip them away, exposing the web-covered mechanisms underneath.\n- Do the three hanging/rotating Forge structures in the upper area around Pack-a-Punch — these are the ones whose controls you will use to aim the laser.\n- Also clear the concealed mechanism panels downstairs, around Wunderfizz.\n\n**If the panels will not come off,** you are not holding the red grapple. Go back to Veytharion's pool and take it.",
               path: [
                 { x: 57.3, y: 50.5 },
                 { x: 57.1, y: 52.7 },
@@ -1499,7 +1510,7 @@ export const rexInfernus: MapData = {
               id: "s4-clear-the-webs",
               title: "Clear the Webs",
               instruction:
-                "**1. Clear the normal webbing**\n\nUnderneath Pack-a-Punch, in the Nexus Core, the exposed gears are covered in webs. Fully charge the Warden's Blight alternate attack and destroy every web that responds to it.\n\n**2. Clear the final web**\n\nThe last, stubborn web will not break with the Wonder Weapon. Make another purple flame (orb \u2192 drag to Pack-a-Punch \u2192 crank \u2192 collect) and shoot that web with the flame instead. As a rule: if a web refuses the charged Wonder Weapon, use a purple flame on it.\n\n**3. Crank the Forge, then run underneath**\n\n- Go to the normal Pack-a-Punch Forge crank and turn it. **The lower control will not work until you have done this.**\n- Immediately run underneath Pack-a-Punch, toward Wunderfizz.\n- Interact with the lever in front of Wunderfizz \u2014 the one you could not use before.\n\n**Treat this as timed.** The reproduced sequence is crank \u2192 sprint underneath \u2192 activate. It has been done solo in that order, so two players operating controls at once does not appear to be required.\n\nOnce the lower control succeeds, the three large Forge/ring levers become usable on the top side of the Nexus Forge, against the pillars.",
+                "**1. Clear the normal webbing**\n\nUnderneath Pack-a-Punch, in the Nexus Core, the exposed gears are covered in webs. Fully charge the Warden's Blight alternate attack and destroy every web that responds to it.\n\n**2. Clear the final web**\n\nThe last, stubborn web will not break with the Wonder Weapon. Make another purple flame (orb \u2192 drag to Pack-a-Punch \u2192 crank \u2192 collect) and shoot that web with the flame instead. As a rule: if a web refuses the charged Wonder Weapon, use a purple flame on it.\n\n**3. Orb into the Forge, crank, then run underneath**\n\n- Grapple another purple orb into the centre of Pack-a-Punch and get it orbiting the Forge.\n- Turn the Pack-a-Punch Forge crank. **The lower control will not work until you have done this.**\n- Immediately run underneath Pack-a-Punch, toward Wunderfizz.\n- Interact with the lever in front of Wunderfizz \u2014 the one you could not use before.\n- The central Forge structures start rotating.\n\n**Treat this as timed.** The reproduced sequence is orb \u2192 crank \u2192 sprint underneath \u2192 activate. It has been done solo in that order, so two players operating controls at once does not appear to be required.\n\nOnce the lower control succeeds, the three large Forge/ring levers become usable on the top side of the Nexus Forge, against the pillars.",
               solidMarkers: true,
               locations: [{ position: { x: 55.3, y: 58.2 } }],
             },
@@ -1517,7 +1528,7 @@ export const rexInfernus: MapData = {
               id: "s4-shadowsmith-corruptions",
               title: "The Four Shadowsmith Corruptions",
               instruction:
-                "Each of the four temples takes three stages: **acquire** its corrupted item (different per temple), **cleanse** it, then **break** its shackle. Cleansing an altar does not finish a Shadowsmith \u2014 the shackle still has to go.\n\n**Cleansing (same for every temple)**\n\n- Take that Shadowsmith's corrupted item to its temple.\n- Place it at the temple's flame altar/cauldron.\n- Return to the Nexus Forge and aim the blue laser at that exact temple.\n- Make another purple flame and bring it back to the temple.\n- Fire the purple flame into the altar three times.\n- Dialogue and effects confirm it worked, and the altar stays lit with purple energy.\n\n**If the item is sitting there and nothing happens, check in this order:**\n- Is the right corruption item placed at this altar?\n- Is the Forge's blue laser actually aimed at this temple?\n- Are you firing a purple flame, not the Wonder Weapon?\n\n**Breaking the shackle (same for every temple)**\n\n- Once the altar is permanently lit, lead a normal zombie close to it.\n- Purple essence flows into one zombie; look closely and it radiates a specific symbol.\n- Activate the nearby Titan Trap so you can read the symbols on the giant's arm shackles.\n- Find the arm carrying the same symbol as the marked zombie.\n- Position the marked zombie so that arm is what kills it.\n- That shackle breaks. Repeat for all four Shadowsmiths.",
+                "Each of the four temples takes three stages here: **acquire** its corrupted item (different per temple), **cleanse** it, then **break** its shackle. Cleansing an altar does not finish a Shadowsmith \u2014 the shackle still has to go.\n\nAnd the shackle is no longer the end of it: each temple then has a floor face tablet, covered in the next stage.\n\n**Cleansing (same for every temple)**\n\n- Take that Shadowsmith's corrupted item to its temple.\n- Place it at the temple's flame altar/cauldron.\n- Return to the Nexus Forge and aim the blue laser at that exact temple.\n- Make another purple flame and bring it back to the temple.\n- Fire the purple flame into the altar three times.\n- Dialogue and effects confirm it worked, and the altar stays lit with purple energy.\n\n**If the item is sitting there and nothing happens, check in this order:**\n- Is the right corruption item placed at this altar?\n- Is the Forge's blue laser actually aimed at this temple?\n- Are you firing a purple flame, not the Wonder Weapon?\n\n**Breaking the shackle (same for every temple)**\n\n- Once the altar is permanently lit, lead a normal zombie close to it.\n- Purple essence flows into one zombie; look closely and it radiates a specific symbol.\n- Activate the nearby Titan Trap so you can read the symbols on the giant's arm shackles.\n- Find the arm carrying the same symbol as the marked zombie.\n- Position the marked zombie so that arm is what kills it.\n- That shackle breaks. Repeat for all four Shadowsmiths.",
               solidMarkers: true,
               locations: [
                 { position: { x: 71.6, y: 63 }, text: "**Caltheris** temple entrance." },
@@ -1551,41 +1562,115 @@ export const rexInfernus: MapData = {
               locations: [{ position: { x: 81.2, y: 55.7 } }],
             },
             {
-              id: "s4-veytharion-puzzle",
-              title: "Shadowsmith 4: Veytharion — Cube Puzzle",
-              instruction:
-                "**Find the four elemental cubes**\n\n- **Fire** \u2014 on top of a window in Veytharion Sanctuary, next to Mule Kick. Wall-jump to bring it down.\n- **Hand** \u2014 on the edge of Veytharion Sanctuary.\n- **Water** \u2014 on top of a column in Veytharion Main Chamber, next to a GobbleGum machine.\n- **Plant/Leaf** \u2014 near a window in Veytharion Sanctuary, by the four pillars.\n\n**Sources disagree on which perk helps spot them:** our run used Death Perception; the community guide credits Vulture Aid. Either is worth having.\n\n**Solve the puzzle**\n\nThe floor inscription is the whole rule: **fire cannot touch water or leaf/grass.** The Hand is your safe separator, so this is a river-crossing puzzle \u2014 never leave fire alone with water or leaf on either side.\n\n- Take Fire + Hand across.\n- Drop Fire on the far side, keep Hand on the transport.\n- Send Hand back.\n- Take Hand + Water across.\n- Rearrange so Hand still sits between the incompatible cubes.\n- Bring Hand back.\n- Take Leaf across, again using Hand as the separator.\n- Finally bring Fire across, keeping Hand between Fire and Water/Leaf.\n\nWhen all four are across, the wall opens and reveals a hidden area with a **blue pool/portal** and a Mystery Perk machine.",
-              solidMarkers: true,
-              locations: [{ position: { x: 37.5, y: 39.4 } }],
-            },
-            {
+              // Two separate island spawns, hence dashed "one of these" markers
+              // rather than solid ones.
               id: "s4-veytharion-corruption",
               status: "unconfirmed",
               title: "Shadowsmith 4: Veytharion — Corruption Item",
               instruction:
-                "**Community lead \u2014 we have not reproduced it.** This supersedes the earlier Light Mend guess. Several players report the method working and it was relayed to the community's front-runners, but no clean video has been posted, so treat it as the best available lead rather than a proven step.\n\nThe framing still holds: each Shadowsmith has a special enemy with an elemental weakness that must be exploited at that temple. **Veytharion's happens at the blue pool/portal** opened by the cube puzzle.\n\n**The reported method**\n\n- Solve the cube puzzle so the hidden area with the blue pool/portal is open.\n- Equip **Napalm Burst** on a weapon.\n- Shoot zombies with Napalm Burst active and kill them while they are burning \u2014 the burn proc is what counts, not just kills from a gun that happens to have it equipped.\n- An orb appears. Grapple it and put it into the blue portal.\n- The portal opens a beam you can control and aim, the same way you aim the Forge laser.\n\n**Two extra pieces from the same reports, ordering unresolved**\n\n- **Trapdoor:** there is a trapdoor at the temple entrance that has to be interacted with. Whether that comes before or after the orb was asked and never answered.\n- **Slab:** in the pool room, shoot the slab with purple fire, then go prone on the slab and use **Aether Shroud** \u2014 do not move, and spam interact.\n\nIf you run this, record what you did in which order; the sequence is the part still not pinned down. Do not mistake side-Easter-egg weapon interactions (such as the corrupted Novaline) for this step.",
-              solidMarkers: true,
-              locations: [{ position: { x: 37.5, y: 39.4 } }],
+                "**The item is found during rain, on one of two islands.** This replaces every earlier lead we published, including the Napalm Burst one — see \"What does not work\" below.\n\nIt comes from a single recent post rather than several independent confirmations, and its provenance has been questioned (players are asking how anyone would organically discover a rain-gated interaction with a near-invisible object), so it stays flagged. The interaction itself is reported to work.\n\n**1. Wait for rain**\n\nThe map has to be **raining**. There is no confirmed way to force it — advance rounds until the weather cycle turns over.\n\n- Interacting with Veytharion's Galaxy Pool was tested as a rain trigger and did **not** reliably cause it. Do not stand there spamming the pool.\n\n**2. Check the PhD island spawn**\n\n- Go to PhD island (Ruinas Insula).\n- Head to the Mystery Box position.\n- Move behind the box and around the corner.\n- Interact at the spawn position and pick the piece up.\n\nIt is described as a **small blue pen-like object**, so it is very easy to miss.\n\n**3. If it is not there, check the Jug island spawn**\n\n- Go to the outer rocky edge near Jugger-Nog (Spira Insula).\n- Find the pointed rock and jump onto/toward its tip.\n- Hold/spam interact.\n\n**Interact even if you cannot see anything.** The report is explicit that the object may not render visibly; there may be a sound cue instead.\n\n**About the \"blue orb\"**\n\nEarly information claimed a grappleable blue orb appears during rain. The newer source doubts the orb is real. Go by the two item spawns above, not by hunting an orb.\n\n**What does not work**\n\nThese were all hunt theories that were tried and produced nothing:\n\n- Napalm Burst kills, and Napalm on the unlit torches\n- Fireworks on the torches\n- Light Mend at the blue pool, or killing Ravagers there\n- Purple flame on the wall circles",
+              locations: [
+                {
+                  position: { x: 84.2, y: 46.5 },
+                  text: "**PhD island** (Ruinas Insula) — behind the Mystery Box, around the corner.",
+                },
+                {
+                  position: { x: 15.9, y: 46.1 },
+                  text: "**Jug island** (Spira Insula) — the pointed rock on the outer edge; jump to its tip and interact.",
+                },
+              ],
             },
           ],
         },
         {
           id: "stage-5",
+          title: "The Face Tablets and Secondary Lasers",
+          steps: [
+            {
+              // Marker coords are the temple entrances — the exact floor-slab
+              // positions inside each temple are not mapped yet.
+              id: "s5-face-tablets-overview",
+              status: "partial",
+              title: "How the Face Tablets Work",
+              instruction:
+                "**This whole phase is newly discovered and was missing from earlier guides.** After the corruption/cleanse/shackle work, there are four floor **face tablets** (slabs), one per Shadowsmith. Each opens to reveal a device underneath, and each device feeds into a second laser puzzle.\n\n**The prerequisite that catches everyone**\n\nThe Forge's blue laser must be **aimed at the temple whose tablet you are working on**. Reports are consistent that a tablet will not respond otherwise. Expect to walk back to the Nexus Forge and re-aim between tablets.\n\nIf a tablet still does nothing with the beam correctly aimed, the likely cause is that temple's cleanse is not finished — do the purple-flame altar work first.\n\n**Each tablet has its own, quite strange, activation**\n\n- **Nyxara** — go prone on the slab and hold interact.\n- **Dravakar** — stand and hold interact; possibly requires taking heavy damage first.\n- **Caltheris** — stand on it and aim down sights at a Mystery Box for ~30 seconds.\n- **Veytharion** — stand on it and jump about 30 times.\n\nEach is covered as its own step below. The markers here are the temple entrances; the precise slab positions inside each temple are not mapped yet.",
+              solidMarkers: true,
+              locations: [
+                { position: { x: 31.6, y: 67.4 }, text: "**Nyxara** temple." },
+                { position: { x: 64.8, y: 45.8 }, text: "**Dravakar** temple." },
+                { position: { x: 71.6, y: 63 }, text: "**Caltheris** temple." },
+                { position: { x: 39.3, y: 41 }, text: "**Veytharion** temple." },
+              ],
+            },
+            {
+              id: "s5-nyxara-tablet",
+              status: "partial",
+              title: "Tablet 1: Nyxara — Go Prone",
+              instruction:
+                "- Aim the Forge's blue laser at **Nyxara**.\n- Find Nyxara's floor face/tablet.\n- **Go prone on it.**\n- Hold the interact button.\n\nThe tablet opens, revealing the device underneath.\n\n**If it does not respond,** the reported cause is that Nyxara's cleanse is not complete — go back and finish the purple-flame altar work first.",
+              solidMarkers: true,
+              locations: [{ position: { x: 31.6, y: 67.4 } }],
+            },
+            {
+              id: "s5-dravakar-tablet",
+              status: "unconfirmed",
+              title: "Tablet 2: Dravakar — Interact (Condition Unclear)",
+              instruction:
+                "**This is the least pinned-down of the four.** Two versions are in circulation and it needs another reproduction.\n\n- Aim the Forge's blue laser at **Dravakar**.\n- Find Dravakar's floor tablet.\n\n**Version A (simple):**\n\n- Stand on the tablet.\n- Hold interact.\n\n**Version B (damage-gated):**\n\n- Take a large amount of damage first — described as roughly **five health bars' worth**.\n- Then go prone on the tablet and interact.\n\nTry A first since it costs nothing. If you get it open, note which one worked and how much damage you had taken.",
+              solidMarkers: true,
+              locations: [{ position: { x: 64.8, y: 45.8 } }],
+            },
+            {
+              id: "s5-caltheris-tablet",
+              status: "partial",
+              title: "Tablet 3: Caltheris — ADS a Mystery Box",
+              instruction:
+                "Oddly specific, but this is what is reported:\n\n- Aim the Forge's blue laser at **Caltheris**.\n- Stand on Caltheris' floor tablet.\n- **Aim down sights at a Mystery Box.**\n- Hold ADS on it for roughly **30 seconds**.\n\nThe tablet then opens and reveals the device beneath it.\n\nYou need a Mystery Box actually visible from the slab, so this may depend on where the box has spawned or been moved to.",
+              solidMarkers: true,
+              locations: [{ position: { x: 71.6, y: 63 } }],
+            },
+            {
+              id: "s5-veytharion-tablet",
+              status: "partial",
+              title: "Tablet 4: Veytharion — Jump ~30 Times",
+              instruction:
+                "- Aim the Forge's blue laser at **Veytharion**.\n- Stand directly on Veytharion's face slab.\n- **Jump repeatedly** — around 30 jumps is the reported requirement.\n\nThe slab opens and reveals a disk/device underneath.\n\nThis is the best-corroborated of the four tablets: multiple comments describe the jump count and the disk it exposes.",
+              solidMarkers: true,
+              locations: [{ position: { x: 39.3, y: 41 } }],
+            },
+            {
+              id: "s5-tablet-lasers",
+              status: "partial",
+              title: "Activate and Redirect the Tablet Lasers",
+              instruction:
+                "Once a tablet is open, the device underneath is what actually matters.\n\n- Equip the **Packed Warden's Blight**.\n- Fully charge its alternate attack.\n- Shoot the exposed disk/device with the charged blast.\n- The disk rises and floats up, connecting with the Forge laser.\n- **Shoot the floating disk itself** to change its orientation and redirect the beam.\n\nThat much is confirmed by multiple reports for Veytharion at least.\n\n**Where each redirected laser is ultimately meant to point is not documented.** Nobody has published the final target or what completing all four does, so treat the aiming portion as unfinished rather than following a guessed destination.\n\nSo the late-game loop now looks like: corruption item → cleanse temple → break Titan shackle → aim Forge at temple → open that temple's face tablet → charged Wonder Weapon on the disk → redirect its laser → *(unknown)*.",
+              solidMarkers: true,
+              locations: [
+                { position: { x: 39.3, y: 41 }, text: "**Veytharion** — the best-documented of the four disks." },
+                { position: { x: 31.6, y: 67.4 }, text: "**Nyxara** disk." },
+                { position: { x: 64.8, y: 45.8 }, text: "**Dravakar** disk." },
+                { position: { x: 71.6, y: 63 }, text: "**Caltheris** disk." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "stage-6",
           title: "The Warden",
           steps: [
             {
-              id: "s5-inner-sanctum",
+              id: "s6-inner-sanctum",
               status: "unconfirmed",
               title: "Enter the Warden's Inner Sanctum",
               instruction:
-                "**The transition from four broken shackles into the Inner Sanctum is not yet documented.**\n\nThe intended progression is clear \u2014 cleanse all four Shadowsmiths, break all four shackles, reach the Warden's Inner Sanctum, confront the Warden \u2014 but no reproducible route from the fourth shackle to the Sanctum has been published that we would stand behind.\n\nDo not follow leaked or cheated completion steps unless someone has independently reproduced them.",
+                "**Still the one real gap in the quest.** The chain is now documented much further than it was \u2014 corruption items, cleanses, Titan shackles, face tablets, and the secondary tablet lasers all have reported methods.\n\nWhat nobody has published is the part after that: **once all four secondary lasers are solved, what exactly opens the Inner Sanctum.** The official subreddit wiki still lists Warden's Blight, Main Quest and the Warden boss fight as TBD.\n\nDo not follow leaked or cheated completion steps unless someone has independently reproduced them.",
             },
             {
-              id: "s5-warden-boss",
+              id: "s6-warden-boss",
               status: "unconfirmed",
               title: "Defeat the Warden",
               instruction:
-                "**Waiting on a legitimate, reproducible route.**\n\nThe Warden is the final confrontation, and a completion cutscene has appeared online, so the quest is finishable. However:\n\n- At least one early completion is disputed as having used cheats/tools.\n- The legitimate Veytharion corruption route is still unresolved.\n- The post-shackles boss trigger is not fully documented.\n\nThis section will be filled in once the steps are confirmed.",
+                "**Waiting on a legitimate, reproducible route.**\n\nThe Warden is the final confrontation, and a completion cutscene has appeared online, so the quest is finishable. However:\n\n- At least one early completion is disputed as having used cheats/tools.\n- The final target for each redirected tablet laser is undocumented.\n- The boss trigger after the tablet lasers is undocumented.\n\nThis section will be filled in once the steps are confirmed.",
             },
           ],
         },
