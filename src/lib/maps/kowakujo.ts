@@ -12,7 +12,7 @@ export const kowakujo: MapData = {
   name: "Kowakujo",
   logo: { src: "/maps/kowakujo_logo.png", width: 701, height: 242 },
   tagline: "Interactive Zombies Map",
-  image: "/maps/kowakujo_map.png",
+  image: "/maps/kowakujo_map.webp",
   imageSize: { width: 2912, height: 2912 },
 
   floors: [

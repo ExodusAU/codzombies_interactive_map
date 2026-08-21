@@ -31,7 +31,7 @@ export const template: MapData = {
   tagline: "Interactive Zombies Map",
 
   // The map image, and its natural pixel size (used for the aspect ratio).
-  image: "/maps/template.png",
+  image: "/maps/template.webp",
   imageSize: { width: 2912, height: 2912 },
 
   // Building levels, lowest first. The first entry is the "ground" floor that

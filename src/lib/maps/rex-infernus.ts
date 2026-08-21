@@ -8,7 +8,7 @@ export const rexInfernus: MapData = {
   logo: { src: "/maps/rex-infernus_logo.png", width: 280, height: 129 },
   tagline: "Interactive Zombies Map",
 
-  image: "/maps/rex-infernus_map.png",
+  image: "/maps/rex-infernus_map.webp",
   imageSize: { width: 5016, height: 5016 },
 
   floors: [
