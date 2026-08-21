@@ -8,8 +8,11 @@ import type { MapData } from "./types";
 
 export const kowakujo: MapData = {
   id: "kowakujo",
+  number: 49,
   name: "Kowakujo",
-  image: "/maps/kowakujo.png",
+  logo: { src: "/maps/kowakujo_logo.png", width: 701, height: 242 },
+  tagline: "Interactive Zombies Map",
+  image: "/maps/kowakujo_map.png",
   imageSize: { width: 2912, height: 2912 },
 
   floors: [
@@ -26,6 +29,7 @@ export const kowakujo: MapData = {
       glyph: "🥤",
       defaultVisible: true,
       description: "Perk-a-Cola vending machines.",
+      group: "Perks",
     },
     {
       id: "utility",
@@ -35,6 +39,7 @@ export const kowakujo: MapData = {
       glyph: "P",
       defaultVisible: true,
       description: "Pack-a-Punch machine.",
+      group: "Map Markers",
     },
     {
       id: "box",
@@ -44,6 +49,7 @@ export const kowakujo: MapData = {
       glyph: "❓",
       defaultVisible: true,
       description: "Possible Mystery Box spawn locations.",
+      group: "Map Markers",
     },
     {
       id: "wallbuy",
@@ -53,6 +59,7 @@ export const kowakujo: MapData = {
       glyph: "🔫",
       defaultVisible: false,
       description: "Wall-mounted weapon purchases.",
+      group: "Map Markers",
     },
     {
       id: "spawn",
@@ -62,6 +69,7 @@ export const kowakujo: MapData = {
       glyph: "🚩",
       defaultVisible: true,
       description: "Player spawn and exfil points.",
+      group: "Map Markers",
     },
     {
       id: "ee",
@@ -70,6 +78,7 @@ export const kowakujo: MapData = {
       kind: "step",
       defaultVisible: true,
       description: "Numbered main-quest step locations.",
+      group: "Quest",
     },
   ],
 
@@ -87,7 +96,7 @@ export const kowakujo: MapData = {
       label: "Pack-a-Punch",
       position: { x: 59.7, y: 7.9 },
       icon: "/images/perks/icons/packapunch.png",
-      revealImage: "/images/perks/ingame/perk_pack-a-punch.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_pack-a-punch.jpg",
     },
     {
       id: "perk-melee-macchiato",
@@ -96,7 +105,7 @@ export const kowakujo: MapData = {
       label: "Melee Macchiato",
       position: { x: 14.9, y: 56.4 },
       icon: "/images/perks/icons/meleemacchiato.webp",
-      revealImage: "/images/perks/ingame/perk_melee_macchiato.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_melee_macchiato.jpg",
     },
     {
       id: "perk-elemental-pop",
@@ -105,7 +114,7 @@ export const kowakujo: MapData = {
       label: "Elemental Pop",
       position: { x: 56.2, y: 18.7 },
       icon: "/images/perks/icons/elementalpop.webp",
-      revealImage: "/images/perks/ingame/perk_elemental-pop.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_elemental-pop.jpg",
     },
     {
       id: "perk-mule-kick",
@@ -122,7 +131,7 @@ export const kowakujo: MapData = {
       label: "Vulture Aid",
       position: { x: 47.2, y: 9 },
       icon: "/images/perks/icons/vultureaid.webp",
-      revealImage: "/images/perks/ingame/perk_vulture-aid.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_vulture-aid.jpg",
     },
     {
       id: "perk-phd-flopper",
@@ -131,7 +140,7 @@ export const kowakujo: MapData = {
       label: "PHD Flopper",
       position: { x: 39.1, y: 33.3 },
       icon: "/images/perks/icons/phdflopper.webp",
-      revealImage: "/images/perks/ingame/perk_phd-flopper.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_phd-flopper.jpg",
     },
     {
       id: "perk-der-wunderfizz",
@@ -140,7 +149,7 @@ export const kowakujo: MapData = {
       label: "Der Wunderfizz",
       position: { x: 43.3, y: 36 },
       icon: "/images/perks/icons/derwunderfizz.png",
-      revealImage: "/images/perks/ingame/perk_der_wunderfizz.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_der_wunderfizz.jpg",
     },
     {
       id: "perk-juggernog",
@@ -149,7 +158,7 @@ export const kowakujo: MapData = {
       label: "Juggernog",
       position: { x: 56.4, y: 41.3 },
       icon: "/images/perks/icons/juggernog.webp",
-      revealImage: "/images/perks/ingame/perk_juggernog.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_juggernog.jpg",
     },
     {
       id: "perk-death-perception",
@@ -158,7 +167,7 @@ export const kowakujo: MapData = {
       label: "Death Perception",
       position: { x: 28.4, y: 80.8 },
       icon: "/images/perks/icons/deathperception.webp",
-      revealImage: "/images/perks/ingame/perk_death_perception.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_death_perception.jpg",
     },
     {
       id: "perk-stamin-up",
@@ -167,7 +176,7 @@ export const kowakujo: MapData = {
       label: "Stamin-Up",
       position: { x: 53.1, y: 76 },
       icon: "/images/perks/icons/staminup.webp",
-      revealImage: "/images/perks/ingame/perk_stamin-up.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_stamin-up.jpg",
     },
     {
       id: "perk-quick-revive",
@@ -184,7 +193,7 @@ export const kowakujo: MapData = {
       label: "Speed Cola",
       position: { x: 58, y: 67.2 },
       icon: "/images/perks/icons/speedcola.webp",
-      revealImage: "/images/perks/ingame/perk_speed-cola.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_speed-cola.jpg",
     },
     {
       id: "perk-wisp-tea",
@@ -201,7 +210,7 @@ export const kowakujo: MapData = {
       label: "Double Tap",
       position: { x: 88.8, y: 53.1 },
       icon: "/images/perks/icons/doubletap.webp",
-      revealImage: "/images/perks/ingame/perk_double-tap.jpg",
+      revealImage: "/images/perks/ingame/kowakujo/perk_double-tap.jpg",
     },
   ],
 

@@ -5,6 +5,18 @@
 // image can be any size and markers stay in the right spot. The kowakujo
 // source image happens to be 2912×2912, and it carries a printed grid
 // (columns B–J, rows 1–9) you can eyeball against when placing markers.
+//
+// One file per map exports a `MapData`; `registry.ts` lists them all and the
+// routing + map switcher derive everything else from that list.
+
+/**
+ * Category ids the UI keys behaviour off. A map's `categories` should use these
+ * ids for the matching concepts so every map behaves the same:
+ *  - `ee`   → the toggle that reveals Easter-egg routes on the map.
+ *  - `perk` → gets the extra "Perk Names" always-show-labels toggle.
+ */
+export const EGG_CATEGORY_ID = "ee";
+export const PERK_CATEGORY_ID = "perk";
 
 /** A point on the map, in percent of image width/height (0–100). */
 export interface MapPoint {
@@ -35,6 +47,12 @@ export interface MarkerCategory {
   defaultVisible?: boolean;
   /** Short description shown in the legend. */
   description?: string;
+  /**
+   * Heading this category sits under in the sidebar's filter panel. Categories
+   * sharing a group render together in declaration order; omit to fall under
+   * the default "Map Markers" heading.
+   */
+  group?: string;
 }
 
 /** A single placeable thing on the map. */
@@ -119,12 +137,27 @@ export function toPolygons(
 }
 
 /**
+ * How well-verified a step is.
+ *  - "confirmed"   → reproduced in our own run, or strong community agreement.
+ *  - "partial"     → the step works, but some exact conditions are still open.
+ *  - "unconfirmed" → a current lead only; not proven to work.
+ * Omit for confirmed steps — only the shakier ones need calling out.
+ */
+export type StepStatus = "confirmed" | "partial" | "unconfirmed";
+
+/**
  * One step of an Easter-egg stage. Selecting a step draws its dotted route on
  * the map and places an icon (e.g. a dragon banner) at the route's end; the
  * player clicks that icon to open the step's reveal screenshot + details.
  */
 export interface EggStep {
   id: string;
+  /**
+   * Verification level, badged in the sidebar and story sheet so players can
+   * see at a glance which steps are safe to burn a run on. Defaults to
+   * "confirmed" when omitted.
+   */
+  status?: StepStatus;
   /** Short heading shown in the nav. */
   title: string;
   /** Full description of what the player does. */
@@ -224,10 +257,53 @@ export interface Floor {
   label: string;
 }
 
+/** Wordmark image shown above the map switcher in the sidebar. */
+export interface MapLogo {
+  /** Path relative to /public. */
+  src: string;
+  /** Natural pixel size — next/image needs both to reserve layout space. */
+  width: number;
+  height: number;
+}
+
+/**
+ * The handful of fields the map switcher needs. Passed to the client instead of
+ * the whole registry so one map's page never ships every other map's data.
+ */
+export interface MapSummary {
+  id: string;
+  number: number;
+  name: string;
+}
+
+/** Narrow a map down to what the switcher needs. */
+export function toMapSummary(map: MapData): MapSummary {
+  return { id: map.id, number: map.number, name: map.name };
+}
+
 /** Everything needed to render one interactive map. */
 export interface MapData {
+  /** URL slug for this map — the site serves it at `/<id>`. */
   id: string;
+  /**
+   * Release order, unique across the registry. The switcher lists maps
+   * newest-first on this, `/` opens the highest-numbered one, and `/<number>`
+   * redirects to the map's slug. Shipping a new map is: add its file to the
+   * registry with the next number.
+   */
+  number: number;
   name: string;
+  /**
+   * Whether the map is finished enough to advertise. `false` keeps it out of
+   * the map switcher and stops it ever becoming the `/` default, so a map can
+   * be built up in the open: its own `/<id>` URL still renders it (unlisted and
+   * marked noindex) so you can check your work. Defaults to true when omitted.
+   */
+  visible?: boolean;
+  /** Wordmark for the sidebar header; falls back to `name` as text. */
+  logo?: MapLogo;
+  /** One-liner under the wordmark. Defaults to "Interactive Zombies Map". */
+  tagline?: string;
   /** Path (relative to /public) of the full-resolution map image. */
   image: string;
   /** Natural pixel size of the image (used for aspect ratio). */

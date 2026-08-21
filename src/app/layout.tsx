@@ -13,10 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Site-level fallback only — each map route sets its own title/description via
+// `mapMetadata()` in `src/lib/maps/registry.ts`.
 export const metadata: Metadata = {
-  title: "Kowakujo — Interactive Zombies Map",
+  title: "Interactive Zombies Maps",
   description:
-    "Interactive Call of Duty Zombies map for Kowakujo: zoom, filter icons, legend, and clickable Easter-egg steps.",
+    "Interactive Call of Duty Zombies maps: zoom, filter icons, legend, and clickable Easter-egg steps.",
 };
 
 export default function RootLayout({

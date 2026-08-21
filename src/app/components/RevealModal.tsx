@@ -240,14 +240,27 @@ export default function RevealModal({ content, onClose }: RevealModalProps) {
   );
 }
 
-export function FormattedDescription({ text }: { text: string }) {
+export function FormattedDescription({
+  text,
+  size = "sm",
+}: {
+  text: string;
+  /** "md" is the long-form reading size used by the story sheet. */
+  size?: "sm" | "md";
+}) {
   const blocks = normalizeDescriptionText(text)
     .split(/\n{2,}/)
     .map((block) => block.trim())
     .filter(Boolean);
 
   return (
-    <div className="space-y-3 text-[13px] leading-6 text-zinc-300">
+    <div
+      className={`text-zinc-300 ${
+        size === "md"
+          ? "space-y-4 text-[15px] leading-7"
+          : "space-y-3 text-[13px] leading-6"
+      }`}
+    >
       {blocks.map((block, blockIndex) => {
         const lines = block
           .split(/\n/)

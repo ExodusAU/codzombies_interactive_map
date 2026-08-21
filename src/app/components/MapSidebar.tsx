@@ -1,13 +1,27 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
+import { Fragment, type ReactNode, useState } from "react";
 import Image from "next/image";
-import type { EggStep, Floor, MapData } from "@/lib/maps/types";
+import type {
+  EggStep,
+  Floor,
+  MapData,
+  MapSummary,
+  MarkerCategory,
+} from "@/lib/maps/types";
+import { PERK_CATEGORY_ID, toMapSummary } from "@/lib/maps/types";
 import { stepColorFor } from "@/lib/maps/stepColors";
 import { FormattedDescription } from "./RevealModal";
+import MapSwitcher from "./MapSwitcher";
+import StepStatusBadge from "./StepStatusBadge";
+
+/** Heading for categories that don't name a `group`. */
+const DEFAULT_FILTER_GROUP = "Map Markers";
 
 interface MapSidebarProps {
   data: MapData;
+  /** The maps players can switch to (hidden ones excluded). */
+  maps: MapSummary[];
   visibleCategories: Set<string>;
   onToggleCategory: (id: string) => void;
   allOn: boolean;
@@ -169,6 +183,7 @@ function stepSummary(text: string): string {
 export default function MapSidebar(props: MapSidebarProps) {
   const {
     data,
+    maps,
     visibleCategories,
     onToggleCategory,
     allOn,
@@ -192,7 +207,6 @@ export default function MapSidebar(props: MapSidebarProps) {
   } = props;
 
   const [open, setOpen] = useState<Section>("eggs");
-  const categoryById = new Map(data.categories.map((cat) => [cat.id, cat]));
   const markerByCategory: Record<string, string> = {
     perk: "P",
     utility: "PaP",
@@ -202,35 +216,50 @@ export default function MapSidebar(props: MapSidebarProps) {
     ee: "EE",
   };
 
-  const renderCategoryFilter = (id: string) => {
-    const cat = categoryById.get(id);
-    if (!cat) return null;
-    const on = visibleCategories.has(cat.id);
-    return (
-      <FilterRow
-        key={cat.id}
-        label={cat.label}
-        active={on}
-        color={cat.color}
-        marker={markerByCategory[cat.id] ?? cat.label.slice(0, 1)}
-        onToggle={() => onToggleCategory(cat.id)}
-      />
-    );
-  };
+  const renderCategoryFilter = (cat: MarkerCategory) => (
+    <FilterRow
+      key={cat.id}
+      label={cat.label}
+      active={visibleCategories.has(cat.id)}
+      color={cat.color}
+      marker={markerByCategory[cat.id] ?? cat.label.slice(0, 1)}
+      onToggle={() => onToggleCategory(cat.id)}
+    />
+  );
+
+  // Filter groups come from the map's own categories (declaration order, first
+  // mention of a group wins its position), so a new map only has to tag its
+  // categories with a `group` to get the same panel.
+  const filterGroups: { title: string; categories: MarkerCategory[] }[] = [];
+  for (const cat of data.categories) {
+    const title = cat.group ?? DEFAULT_FILTER_GROUP;
+    const group = filterGroups.find((g) => g.title === title);
+    if (group) group.categories.push(cat);
+    else filterGroups.push({ title, categories: [cat] });
+  }
 
   return (
     <aside className="flex h-full w-80 shrink-0 flex-col border-r border-white/10 bg-zinc-950 text-zinc-200">
       <div className="border-b border-white/10 px-4 py-4">
-        <Image
-          src="/maps/kowakujo_logo.png"
-          alt={data.name}
-          width={701}
-          height={242}
-          priority
-          className="h-auto w-48 max-w-full"
-        />
-        <p className="text-xs text-zinc-500">Interactive Zombies Map</p>
-        <p className="mt-1 text-[10px] uppercase tracking-wide text-zinc-600">
+        {data.logo ? (
+          <Image
+            src={data.logo.src}
+            alt={data.name}
+            width={data.logo.width}
+            height={data.logo.height}
+            preload
+            className="h-auto w-48 max-w-full"
+          />
+        ) : (
+          <h1 className="text-xl font-bold text-white">{data.name}</h1>
+        )}
+        <p className="text-xs text-zinc-500">
+          {data.tagline ?? "Interactive Zombies Map"}
+        </p>
+
+        <MapSwitcher maps={maps} current={toMapSummary(data)} />
+
+        <p className="mt-2 text-[10px] uppercase tracking-wide text-zinc-600">
           {data.eggs.reduce((count, egg) => count + egg.stages.length, 0)} quest
           sections /{" "}
           {data.eggs.reduce(
@@ -302,26 +331,26 @@ export default function MapSidebar(props: MapSidebarProps) {
               />
             </FilterGroup>
 
-            <FilterGroup title="Perks">
-              {renderCategoryFilter("perk")}
-              <FilterRow
-                label="Perk Names"
-                active={showPerkNames}
-                color="#22d3ee"
-                marker="T"
-                onToggle={onTogglePerkNames}
-                suffix={showPerkNames ? "always" : "hover"}
-              />
-            </FilterGroup>
-
-            <FilterGroup title="Map Markers">
-              {renderCategoryFilter("utility")}
-              {renderCategoryFilter("box")}
-              {renderCategoryFilter("wallbuy")}
-              {renderCategoryFilter("spawn")}
-            </FilterGroup>
-
-            <FilterGroup title="Quest">{renderCategoryFilter("ee")}</FilterGroup>
+            {filterGroups.map((group) => (
+              <FilterGroup key={group.title} title={group.title}>
+                {group.categories.map((cat) => (
+                  <Fragment key={cat.id}>
+                    {renderCategoryFilter(cat)}
+                    {/* Perks carry a companion always-show-labels toggle. */}
+                    {cat.id === PERK_CATEGORY_ID && (
+                      <FilterRow
+                        label="Perk Names"
+                        active={showPerkNames}
+                        color={cat.color}
+                        marker="T"
+                        onToggle={onTogglePerkNames}
+                        suffix={showPerkNames ? "always" : "hover"}
+                      />
+                    )}
+                  </Fragment>
+                ))}
+              </FilterGroup>
+            ))}
           </div>
         )}
 
@@ -511,9 +540,13 @@ export default function MapSidebar(props: MapSidebarProps) {
                                     >
                                       {idx + 1}
                                     </span>
-                                    <span>
-                                      <span className="block text-sm font-medium text-zinc-100">
+                                    <span className="min-w-0">
+                                      <span className="flex flex-wrap items-center gap-1.5 text-sm font-medium text-zinc-100">
                                         {step.title}
+                                        <StepStatusBadge
+                                          status={step.status}
+                                          compact
+                                        />
                                       </span>
                                       <span className="block text-xs leading-snug text-zinc-400">
                                         {stepSummary(step.instruction)}

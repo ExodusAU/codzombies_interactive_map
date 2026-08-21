@@ -1,7 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { EggStep, MapData, MapMarker, MapPoint } from "@/lib/maps/types";
+import type {
+  EggStep,
+  MapData,
+  MapMarker,
+  MapPoint,
+  MapSummary,
+} from "@/lib/maps/types";
+import { EGG_CATEGORY_ID } from "@/lib/maps/types";
 import { stepColorFor } from "@/lib/maps/stepColors";
 import InteractiveMap, { type MapStageHandle } from "./InteractiveMap";
 import MapSidebar from "./MapSidebar";
@@ -11,6 +18,8 @@ import StoryMode from "./StoryMode";
 
 interface MapViewerProps {
   data: MapData;
+  /** The maps players can switch to (hidden ones excluded). */
+  maps: MapSummary[];
 }
 
 /**
@@ -83,7 +92,7 @@ function revealUnits(data: MapData): RevealUnit[] {
   return out;
 }
 
-export default function MapViewer({ data }: MapViewerProps) {
+export default function MapViewer({ data, maps }: MapViewerProps) {
   // Filters default to only area names visible.
   const [visibleCategories, setVisibleCategories] = useState<Set<string>>(
     () => new Set(),
@@ -148,7 +157,7 @@ export default function MapViewer({ data }: MapViewerProps) {
   // Turn the Easter-egg layer on (clicking a stage or step reveals routes).
   const enableEggLayer = () =>
     setVisibleCategories((prev) =>
-      prev.has("ee") ? prev : new Set(prev).add("ee"),
+      prev.has(EGG_CATEGORY_ID) ? prev : new Set(prev).add(EGG_CATEGORY_ID),
     );
 
   const units = revealUnits(data);
@@ -283,6 +292,7 @@ export default function MapViewer({ data }: MapViewerProps) {
     <div className="flex h-full w-full overflow-hidden bg-black text-zinc-100">
       <MapSidebar
         data={data}
+        maps={maps}
         visibleCategories={visibleCategories}
         onToggleCategory={toggleCategory}
         allOn={allOn}
@@ -317,7 +327,7 @@ export default function MapViewer({ data }: MapViewerProps) {
           highlightMarkerId={highlightMarkerId}
           devCoords={devCoords}
           onMarkerClick={openMarkerReveal}
-          eggRoutes={visibleCategories.has("ee") ? eggRoutes : []}
+          eggRoutes={visibleCategories.has(EGG_CATEGORY_ID) ? eggRoutes : []}
           onEggIconClick={openEggReveal}
           onEggLocationClick={openEggLocationReveal}
           drawMode={drawMode}

@@ -47,11 +47,54 @@ npm run lint
 ## Project Structure
 
 - `src/lib/maps/kowakujo.ts` - map data, markers, areas, Easter egg steps, routes, and screenshots.
+- `src/lib/maps/registry.ts` - the list of available maps plus route/metadata helpers.
+- `src/lib/maps/template.ts` - annotated starting point for a new map.
 - `src/lib/maps/types.ts` - shared data model for maps and objectives.
+- `src/app/page.tsx` - the main URL, which always opens the most recent map.
+- `src/app/[map]/page.tsx` - the per-map route (`/kowakujo`).
 - `src/app/components/InteractiveMap.tsx` - zoomable map, markers, routes, and click handling.
 - `src/app/components/MapSidebar.tsx` - filters, legend, floor switcher, and Easter egg navigation.
+- `src/app/components/MapSwitcher.tsx` - dropdown under the wordmark for changing map.
 - `src/app/components/RevealModal.tsx` - screenshot lightbox, gallery thumbnails, and formatted descriptions.
 - `public/` - map images, perk icons, Easter egg icons, and in-game screenshots.
+
+## Maps and Routing
+
+Every map carries a `number` (its release order). That single field drives the
+routing:
+
+- `/` always opens the highest-numbered map, so a new release becomes the
+  landing page as soon as it is registered.
+- `/<slug>` is a map's permanent URL (`/kowakujo`) - safe to share, and it keeps
+  working after newer maps ship.
+- `/<number>` redirects to that map's slug (`/49` -> `/kowakujo`).
+- Anything else 404s.
+
+The dropdown under the sidebar wordmark lists every visible map newest-first and
+tags the newest one as "Latest".
+
+### Work-in-progress Maps
+
+Set `visible: false` on a map to keep it unfinished in public. It drops out of
+the switcher and can never become the `/` default, but it still renders at its
+own `/<slug>` URL so you can build it up and check your work. The switcher shows
+a "Draft" badge while you're on one, and the page is marked `noindex`. Flip the
+flag to `true` to ship it. Omitting the flag means visible.
+
+### Adding a Map
+
+1. Copy `src/lib/maps/template.ts` to `src/lib/maps/<slug>.ts` and rename the
+   export. The `id` becomes the URL slug.
+2. Give it the next `number`, plus a `logo` (a wordmark in `public/maps/`) and
+   an optional `tagline`. Leave `visible: false` while you fill it in.
+3. Import it in `src/lib/maps/registry.ts` and add it to the `registered` array.
+
+Nothing else needs editing - the switcher, routes, page titles, and the `/`
+default all read from the registry.
+
+Two category ids carry behaviour, so reuse them on new maps: `ee` toggles the
+Easter-egg route layer, and `perk` gets the extra "Perk Names" label toggle.
+Each category's `group` sets the heading it appears under in the filter panel.
 
 ## Editing Map Data
 

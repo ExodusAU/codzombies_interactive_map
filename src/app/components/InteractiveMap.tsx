@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from "react";
 import type { MapData, MapMarker, MapPoint } from "@/lib/maps/types";
-import { toPolygons } from "@/lib/maps/types";
+import { PERK_CATEGORY_ID, toPolygons } from "@/lib/maps/types";
 import type { DrawShape } from "./DrawPanel";
 
 /** Resolved geometry for an egg step's route drawn on the map. */
@@ -471,7 +471,7 @@ const InteractiveMap = forwardRef<MapStageHandle, InteractiveMapProps>(
                     otherwise revealed on hover. */}
                 <span
                   className={`pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap rounded bg-black/85 px-1.5 py-0.5 text-[11px] font-medium text-white ${
-                    showPerkNames && cat.id === "perk"
+                    showPerkNames && cat.id === PERK_CATEGORY_ID
                       ? "opacity-100"
                       : "opacity-0 transition-opacity group-hover:opacity-100"
                   }`}

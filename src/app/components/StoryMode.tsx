@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { EasterEgg, EggLocation, EggStep } from "@/lib/maps/types";
 import { stepColorFor } from "@/lib/maps/stepColors";
 import { FormattedDescription } from "./RevealModal";
+import StepStatusBadge from "./StepStatusBadge";
 
 interface StoryModeProps {
   eggs: EasterEgg[];
@@ -117,12 +118,40 @@ export default function StoryMode({
       {/* Scrollable sheet */}
       <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto">
         <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
-          <h1
-            className="mb-10 border-b border-white/10 pb-4 text-3xl font-bold"
-            style={{ color: egg.color }}
-          >
-            {egg.name}
-          </h1>
+          <header className="mb-12 border-b border-white/10 pb-5">
+            <h1
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              style={{ color: egg.color }}
+            >
+              {egg.name}
+            </h1>
+            <p className="mt-2 text-sm text-zinc-400">
+              {egg.stages.length} stages /{" "}
+              {egg.stages.reduce((n, st) => n + st.steps.length, 0)} steps —
+              follow top to bottom.
+            </p>
+            {/* Status key: only shown when the quest actually has shaky steps. */}
+            {egg.stages.some((st) =>
+              st.steps.some((x) => x.status && x.status !== "confirmed"),
+            ) && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2.5 text-xs text-zinc-400">
+                <span className="font-semibold uppercase tracking-wide text-zinc-500">
+                  Status key
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <StepStatusBadge status="partial" />
+                  some conditions still open
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <StepStatusBadge status="unconfirmed" />
+                  a lead only — not proven
+                </span>
+                <span className="text-zinc-500">
+                  Unbadged steps are confirmed.
+                </span>
+              </div>
+            )}
+          </header>
 
           {egg.stages.map((stage, stageIndex) => (
             <section
@@ -130,14 +159,14 @@ export default function StoryMode({
               data-stage={stage.id}
               className="mb-14 scroll-mt-4"
             >
-              <h2 className="mb-6 flex items-baseline gap-3 border-b border-white/10 pb-3 text-2xl font-bold text-white">
+              <h2 className="sticky top-0 z-10 -mx-4 mb-6 flex items-baseline gap-3 border-b border-white/10 bg-zinc-950/95 px-4 py-3 text-2xl font-bold text-white backdrop-blur sm:-mx-6 sm:px-6">
                 <span
-                  className="rounded px-2 py-0.5 text-base font-semibold text-black"
+                  className="shrink-0 rounded px-2 py-0.5 text-base font-semibold text-black"
                   style={{ background: egg.color }}
                 >
                   Stage {stageIndex + 1}
                 </span>
-                {stage.title}
+                <span className="min-w-0">{stage.title}</span>
               </h2>
 
               {stage.steps.map((step, stepIndex) => {
@@ -146,19 +175,21 @@ export default function StoryMode({
                 return (
                   <article
                     key={step.id}
-                    className="mb-10 rounded-lg border border-white/10 bg-zinc-900/60 p-5"
+                    className="mb-10 rounded-lg border border-l-4 border-white/10 bg-zinc-900/60 p-5 sm:p-6"
+                    style={{ borderLeftColor: color }}
                   >
-                    <h3 className="mb-3 flex items-baseline gap-2.5 text-lg font-semibold text-white">
+                    <h3 className="mb-4 flex flex-wrap items-center gap-x-2.5 gap-y-2 text-lg font-semibold text-white sm:text-xl">
                       <span
-                        className="flex h-7 w-7 shrink-0 translate-y-1 items-center justify-center rounded-full text-sm font-bold text-black"
+                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold text-black"
                         style={{ background: color }}
                       >
                         {stepIndex + 1}
                       </span>
-                      {step.title}
+                      <span className="min-w-0">{step.title}</span>
+                      <StepStatusBadge status={step.status} />
                     </h3>
 
-                    <FormattedDescription text={step.instruction} />
+                    <FormattedDescription text={step.instruction} size="md" />
 
                     {step.revealCaption &&
                       step.revealCaption !== step.instruction && (
