@@ -165,6 +165,30 @@ export default function MapViewer({ data, maps }: MapViewerProps) {
   function buildUnitContent(u: RevealUnit, startIndex = 0): RevealContent {
     const { step, locationIndex } = u;
     const loc = locationIndex !== null ? step.locations?.[locationIndex] : null;
+    const captionParts = [step.instruction];
+
+    if (
+      step.revealCaption &&
+      !captionParts.includes(step.revealCaption)
+    ) {
+      captionParts.push(step.revealCaption);
+    }
+
+    if (loc) {
+      const locationParts = [loc.text, loc.revealCaption].filter(
+        (text): text is string =>
+          Boolean(text) && !captionParts.includes(text as string),
+      );
+
+      if (locationParts.length) {
+        const locationLabel = loc.label
+          ? `Map location: ${loc.label}`
+          : `Map location ${(locationIndex ?? 0) + 1}`;
+        captionParts.push(
+          `**${locationLabel}**\n\n${[...new Set(locationParts)].join("\n\n")}`,
+        );
+      }
+    }
 
     // Prev/next across all units in the same quest (steps + sub-tasks).
     const eggUnits = units.filter((x) => x.eggId === u.eggId);
@@ -179,12 +203,7 @@ export default function MapViewer({ data, maps }: MapViewerProps) {
       image: loc ? loc.revealImage : step.revealImage,
       images: loc ? loc.revealImages : step.revealImages,
       startIndex,
-      caption: loc
-        ? (loc.revealCaption ??
-          loc.text ??
-          step.revealCaption ??
-          step.instruction)
-        : (step.revealCaption ?? step.instruction),
+      caption: captionParts.join("\n\n"),
       stepNavigation: {
         previous: prev
           ? {

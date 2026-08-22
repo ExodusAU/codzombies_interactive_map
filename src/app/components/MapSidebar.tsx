@@ -571,8 +571,16 @@ export default function MapSidebar(props: MapSidebarProps) {
                                   {active && (
                                     <div className="mb-2 mt-1 rounded-md border border-white/10 bg-black/25 px-3 py-2">
                                       <FormattedDescription
-                                        text={step.revealCaption ?? step.instruction}
+                                        text={step.instruction}
                                       />
+                                      {step.revealCaption &&
+                                        step.revealCaption !== step.instruction && (
+                                          <div className="mt-3 border-t border-white/10 pt-3">
+                                            <FormattedDescription
+                                              text={step.revealCaption}
+                                            />
+                                          </div>
+                                        )}
                                     </div>
                                   )}
 
