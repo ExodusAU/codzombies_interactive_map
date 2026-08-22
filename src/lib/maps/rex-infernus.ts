@@ -1517,7 +1517,7 @@ export const rexInfernus: MapData = {
               id: "s4-shadowsmith-corruptions",
               title: "The Four Shadowsmith Corruptions",
               instruction:
-                "Each of the four temples takes three stages: **acquire** its corrupted item (different per temple), **cleanse** it, then **break** its shackle. Cleansing an altar does not finish a Shadowsmith \u2014 the shackle still has to go.\n\n**Cleansing (same for every temple)**\n\n- Take that Shadowsmith's corrupted item to its temple.\n- Place it at the temple's flame altar/cauldron.\n- Return to the Nexus Forge and aim the blue laser at that exact temple.\n- Make another purple flame and bring it back to the temple.\n- Fire the purple flame into the altar three times.\n- Dialogue and effects confirm it worked, and the altar stays lit with purple energy.\n\n**If the item is sitting there and nothing happens, check in this order:**\n- Is the right corruption item placed at this altar?\n- Is the Forge's blue laser actually aimed at this temple?\n- Are you firing a purple flame, not the Wonder Weapon?\n\n**Breaking the shackle (same for every temple)**\n\n- Once the altar is permanently lit, lead a normal zombie close to it.\n- Purple essence flows into one zombie; look closely and it radiates a specific symbol.\n- Activate the nearby Titan Trap so you can read the symbols on the giant's arm shackles.\n- Find the arm carrying the same symbol as the marked zombie.\n- Position the marked zombie so that arm is what kills it.\n- That shackle breaks. Repeat for all four Shadowsmiths.",
+                "Each of the four temples takes three stages: **acquire** its corrupted item (different per temple), **cleanse** it, then **break** its shackle. Cleansing an altar does not finish a Shadowsmith \u2014 the shackle still has to go.\n\n**Cleansing (same for every temple)**\n\n- Take that Shadowsmith's corrupted item to its temple.\n- Place it at the temple's flame altar/cauldron.\n- Return to the Nexus Forge and aim the blue laser at that exact temple.\n- Make another purple flame and bring it back to the temple.\n- Fire the purple flame into the altar three times.\n- Dialogue and effects confirm it worked, and the altar stays lit with purple energy.\n\n**If the item is sitting there and nothing happens, check in this order:**\n- Is the right corruption item placed at this altar?\n- Is the Forge's blue laser actually aimed at this temple?\n- Are you firing a purple flame, not the Wonder Weapon?\n\n**Breaking the shackle (same for every temple)**\n\n- Once the altar is permanently lit, lead a normal zombie close to it.\n- Purple essence flows into one zombie; look closely and it radiates a specific symbol.\n- Activate the nearby Titan Trap so you can read the symbols on the giant's arm shackles.\n- Find the arm carrying the same symbol as the marked zombie.\n- Position the marked zombie so that arm is what kills it.\n- That shackle breaks. Repeat for all four Shadowsmiths.\n\n**The shackle is still not the end of a temple.** Each one then has a face tile, a shard reflector and a statue to deal with \u2014 see the next stage.",
               solidMarkers: true,
               locations: [
                 { position: { x: 71.6, y: 63 }, text: "**Caltheris** temple entrance." },
@@ -1554,38 +1554,347 @@ export const rexInfernus: MapData = {
               id: "s4-veytharion-puzzle",
               title: "Shadowsmith 4: Veytharion — Cube Puzzle",
               instruction:
-                "**Find the four elemental cubes**\n\n- **Fire** \u2014 on top of a window in Veytharion Sanctuary, next to Mule Kick. Wall-jump to bring it down.\n- **Hand** \u2014 on the edge of Veytharion Sanctuary.\n- **Water** \u2014 on top of a column in Veytharion Main Chamber, next to a GobbleGum machine.\n- **Plant/Leaf** \u2014 near a window in Veytharion Sanctuary, by the four pillars.\n\n**Sources disagree on which perk helps spot them:** our run used Death Perception; the community guide credits Vulture Aid. Either is worth having.\n\n**Solve the puzzle**\n\nThe floor inscription is the whole rule: **fire cannot touch water or leaf/grass.** The Hand is your safe separator, so this is a river-crossing puzzle \u2014 never leave fire alone with water or leaf on either side.\n\n- Take Fire + Hand across.\n- Drop Fire on the far side, keep Hand on the transport.\n- Send Hand back.\n- Take Hand + Water across.\n- Rearrange so Hand still sits between the incompatible cubes.\n- Bring Hand back.\n- Take Leaf across, again using Hand as the separator.\n- Finally bring Fire across, keeping Hand between Fire and Water/Leaf.\n\nWhen all four are across, the wall opens and reveals a hidden area with a **blue pool/portal** and a Mystery Perk machine.",
+                "**Find the four elemental cubes**\n\n- **Fire** \u2014 on top of a window in Veytharion Sanctuary, next to Mule Kick. Wall-jump to bring it down.\n- **Hand** \u2014 on the edge of Veytharion Sanctuary.\n- **Water** \u2014 on top of a column in Veytharion Main Chamber, next to a GobbleGum machine.\n- **Plant/Leaf** \u2014 near a window in Veytharion Sanctuary, by the four pillars.\n\n**Sources disagree on which perk helps spot them:** our run used Death Perception; the community guide credits Vulture Aid. Either is worth having.\n\n**Solve the puzzle**\n\nThe floor inscription is the whole rule: **fire cannot touch water or leaf/grass.** The Hand is your safe separator, so this is a river-crossing puzzle \u2014 never leave fire alone with water or leaf on either side.\n\n- Take Fire + Hand across.\n- Drop Fire on the far side, keep Hand on the transport.\n- Send Hand back.\n- Take Hand + Water across.\n- Rearrange so Hand still sits between the incompatible cubes.\n- Bring Hand back.\n- Take Leaf across, again using Hand as the separator.\n- Finally bring Fire across, keeping Hand between Fire and Water/Leaf.\n\nWhen all four are across, the wall opens and reveals a hidden area with a **blue pool/portal**, interact with it to hear an audio queue.\n\n**That same interaction is the rain trigger.** Using the portal makes the next round rain, which is what the temple purifications need — see the purification steps in **The Face Tiles and Shadow Statues**.",
               solidMarkers: true,
               locations: [{ position: { x: 37.5, y: 39.4 } }],
             },
             {
               id: "s4-veytharion-corruption",
-              status: "unconfirmed",
-              title: "Shadowsmith 4: Veytharion — Corruption Item",
+              status: "partial",
+              title: "Shadowsmith 4: Veytharion — The Sash",
               instruction:
-                "**Community lead \u2014 we have not reproduced it.** This supersedes the earlier Light Mend guess. Several players report the method working and it was relayed to the community's front-runners, but no clean video has been posted, so treat it as the best available lead rather than a proven step.\n\nThe framing still holds: each Shadowsmith has a special enemy with an elemental weakness that must be exploited at that temple. **Veytharion's happens at the blue pool/portal** opened by the cube puzzle.\n\n**The reported method**\n\n- Solve the cube puzzle so the hidden area with the blue pool/portal is open.\n- Equip **Napalm Burst** on a weapon.\n- Shoot zombies with Napalm Burst active and kill them while they are burning \u2014 the burn proc is what counts, not just kills from a gun that happens to have it equipped.\n- An orb appears. Grapple it and put it into the blue portal.\n- The portal opens a beam you can control and aim, the same way you aim the Forge laser.\n\n**Two extra pieces from the same reports, ordering unresolved**\n\n- **Trapdoor:** there is a trapdoor at the temple entrance that has to be interacted with. Whether that comes before or after the orb was asked and never answered.\n- **Slab:** in the pool room, shoot the slab with purple fire, then go prone on the slab and use **Aether Shroud** \u2014 do not move, and spam interact.\n\nIf you run this, record what you did in which order; the sequence is the part still not pinned down. Do not mistake side-Easter-egg weapon interactions (such as the corrupted Novaline) for this step.",
-              solidMarkers: true,
-              locations: [{ position: { x: 37.5, y: 39.4 } }],
+                "**Veytharion's corruption item is the Sash.** This replaces the earlier Napalm Burst lead we published, which did not hold up.\n\nIt spawns in one of two places, on opposite sides of the map. Check both.\n\n**Spawn A — Spira Insula, near Jugger-Nog**\n\n- Head to Jugger-Nog on Spira Insula.\n- It can sit on **either side** — both spots are marked.\n- Picking it up is awkward. Expect to **grapple and interact**, or to interact while going off the edge of the map.\n\n**Spawn B — Ruinas Insula, near PhD Flopper**\n\n- Go to the Mystery Box next to PhD Flopper.\n- The Sash is on the **back side of the wall behind the box**, at the base of it.\n- **Grapple around the wall** to reach it.\n- **You will fall while grabbing it.** That is expected — **spam interact** on the way down and you will still get it.\n\nThe two Spira spots are exact. **The PhD marker is a best guess** at the position, so search the base of that back wall rather than trusting the circle.\n\n**Then it is the normal corruption process**\n\nTake the Sash to Veytharion's altar and follow the cleansing and shackle steps in **The Four Shadowsmith Corruptions** — place it, aim the Forge laser at Veytharion, three purple flames into the altar, then break the shackle with the marked zombie.",
+              locations: [
+                {
+                  positions: [
+                    { x: 11.9, y: 47 },
+                    { x: 14.8, y: 51 },
+                  ],
+                  text: "**Spira Insula**, by Jugger-Nog — either side. Grapple-interact, or interact as you go off the edge.",
+                },
+                {
+                  position: { x: 89.4, y: 43.7 },
+                  text: "**Ruinas Insula**, by PhD Flopper — base of the back side of the wall behind the Mystery Box. Position approximate; you will fall grabbing it, so spam interact.",
+                },
+                {
+                  // Definite spot, unlike the two dashed spawn options above.
+                  position: { x: 37.3, y: 38.9 },
+                  solid: true,
+                  text: "**Veytharion's altar** — bring the Sash here, then three purple flames into it.",
+                },
+              ]
             },
           ],
         },
         {
           id: "stage-5",
+          title: "The Face Tiles and Shadow Statues",
+          steps: [
+            {
+              // All four temples run the same five-beat chain end to end.
+              // Only Nyxara's aim point and statue markers are placeholders.
+              id: "s5-dravakar-face-tile",
+              title: "Dravakar: The Face Tile and Shard Reflector",
+              instruction:
+                "**Breaking the shackle does not finish a temple.** Each Shadowsmith has a further chain after it, and Dravakar's is the one that has been run start to finish.\n\n- Return to the **Dravakar main chamber**.\n- Reveal the floor tile with the **face** on it.\n- Interact with the tile and let the **quote** play out.\n- Then kill a zombie with a **frag grenade** directly on top of the tile.\n\n**The grenade kill has to land on the tile itself**, not beside it. Cook or place the grenade on the tile and walk a zombie onto it rather than throwing into a pack nearby.\n\nA **shard reflector** is revealed.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the reflector with it.\n\nThe reflector comes up and can now be aimed.",
+              solidMarkers: true,
+              locations: [{ position: { x: 70, y: 41.2 } }],
+            },
+            {
+              id: "s5-dravakar-reflector-aim",
+              title: "Dravakar: Aim the Reflector at the Corner",
+              instruction:
+                "The reflector has to be pointed at one specific spot in the corner of the temple.\n\n**In Dravakar that spot is the back right of the main chamber, above the zombie hole.**\n\n- Shoot the reflector to move it, the same way you redirect the Forge beam.\n- Walk it around until it points at that back-right corner, above the zombie hole.\n\n**This requires accuracy.** The target is small, and sitting a nudge off it looks identical to being on it until nothing happens. Expect to overshoot and come back rather than landing it first try.\n\nEvery temple has its own aim point — Dravakar's corner, Caltheris' top left, Nyxara's below the floor, Veytharion's back left wall. All four are written up; only Nyxara's is still an approximate area rather than a plotted spot.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 77.8, y: 38.3 },
+                  text: "**The aim point** — back right of the main chamber, above the zombie hole.",
+                },
+                { position: { x: 70, y: 41.2 }, text: "**The reflector**, on the face tile." },
+              ],
+            },
+            {
+              id: "s5-dravakar-statue",
+              title: "Dravakar: Charge the Souls and Break the Statue",
+              instruction:
+                "With the reflector held on the corner point:\n\n- **Kill zombies underneath the mirror.** The souls charge it.\n- Keep killing there until a **statue of Dravakar** is revealed.\n\n**If souls are not banking,** the beam has drifted off the corner point, or was never quite on it. Go back and re-aim before grinding more kills.\n\n**Break the statue**\n\n- Fully charge the Warden's Blight alternate attack.\n- **Shoot the statue in the head.**\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue of Dravakar.",
+              solidMarkers: true,
+              locations: [{ position: { x: 70, y: 41.2 } }],
+            },
+            {
+              id: "s5-dravakar-orb-head",
+              title: "Dravakar: Send an Orb into the Giant Head",
+              instruction:
+                "The last piece is at the **giant head over the Dravakar entrance**.\n\n- Grapple a **purple orb** and pull it beneath the giant head.\n- Hold it there, directly under the head.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot drives the orb up into the head.\n\nOne piece of Dravakar left after this — the purification below.",
+              solidMarkers: true,
+              locations: [{ position: { x: 65.1, y: 45.9 } }],
+            },
+            {
+              // The rain trigger lives in Veytharion but belongs to Dravakar's
+              // chain, hence the two markers on opposite sides of the map.
+              id: "s5-dravakar-purify",
+              title: "Dravakar: Make it Rain, then Purify the Temple",
+              instruction:
+                "The last thing Dravakar needs is **rain**, and the rain is triggered over in Veytharion.\n\n**1. Trigger the rain**\n\n- Go to the **portal in Veytharion Sanctuary** — the one opened by the cube puzzle.\n- Interact with it.\n- **The next round will rain.** It does not turn over immediately, so play the current round out.\n\n**2. Purify Dravakar**\n\n- While it is raining, make a **purple flame** (orb → drag to Pack-a-Punch → crank → collect).\n- Bring it to the **giant head at Dravakar's entrance**.\n- Shoot the flame at the head's **forehead**.\n\nThe temple is now completely purified.\n\n**If the flame does nothing,** check that it is actually raining. The interaction is gated on the weather, not just on holding a flame — and the trigger only buys you the one round of it.\n\n**What the four purified temples then unlock is not documented** — see the Warden stage.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 29.8, y: 31.2 },
+                  text: "**Veytharion Sanctuary portal** — interact to make the next round rain.",
+                },
+                {
+                  position: { x: 63.6, y: 47.2 },
+                  text: "**Dravakar's giant head** — purple flame to the forehead, while it rains.",
+                },
+              ],
+            },
+            {
+              id: "s5-caltheris-face-tile",
+              title: "Caltheris: The Face Tile and Shard Reflector",
+              instruction:
+                "Caltheris follows the same shape as Dravakar: a face tile, a shard reflector, a soul charge and a statue. Only the tile's activation differs.\n\n- Break Caltheris' shackle first.\n- Return to Caltheris' chamber and find the floor tile with the **face** on it.\n- **Stand on the plate** and interact with it.\n- **Stay on the plate** and **aim down sights at the Mystery Box** for **15-20 seconds**.\n\nThe tile slides away and reveals another **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror with it.\n\nYou need the Mystery Box in view from the plate, so where the box currently sits matters. Do not step off the plate while holding ADS — the timer is on standing there aiming at it.",
+              solidMarkers: true,
+              locations: [{ position: { x: 79.9, y: 62.5 } }],
+            },
+            {
+              id: "s5-caltheris-reflector-aim",
+              title: "Caltheris: Aim the Reflector at the Top Left",
+              instruction:
+                "As with Dravakar, the reflector has to be pointed at one specific spot in the chamber.\n\n**In Caltheris that spot is the top left side of the chamber.**\n\n- Shoot the mirror to move it.\n- Walk the beam onto the top-left wall until it sits on the spot.\n\n**Accuracy matters here too.** Being slightly off looks identical to being on target right up until nothing charges. If souls will not bank in the next step, come back and re-aim before grinding more kills.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 85.8, y: 55.8 },
+                  text: "**The aim point** — the top left side of the chamber.",
+                },
+                { position: { x: 79.9, y: 62.5 }, text: "**The reflector**, on the face tile." },
+              ],
+            },
+            {
+              id: "s5-caltheris-statue",
+              title: "Caltheris: Charge the Souls and Break the Statue",
+              instruction:
+                "- **Kill zombies underneath the mirror** to charge souls, the same as Dravakar.\n- Keep killing until a **statue head** is revealed — it appears on the wall where the laser was landing.\n\n**Break the statue**\n\n- Fully charge the Warden's Blight alternate attack.\n- **Shoot the statue** with it.\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue.",
+              solidMarkers: true,
+              locations: [
+                { position: { x: 85.8, y: 55.8 }, text: "**The statue** appears where the beam meets the wall." },
+                { position: { x: 79.9, y: 62.5 }, text: "**The mirror** — kill zombies underneath it to charge souls." },
+              ],
+            },
+            {
+              id: "s5-caltheris-orb-head",
+              title: "Caltheris: Send an Orb into the Giant Head",
+              instruction:
+                "**Identical to the Dravakar orb step**, at Caltheris' own entrance.\n\n- Grapple a **purple orb** and pull it to the **Caltheris entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Caltheris head.\n\nOne piece of Caltheris left after this — the purification below.",
+              solidMarkers: true,
+              locations: [{ position: { x: 73, y: 62.8 } }],
+            },
+            {
+              id: "s5-caltheris-purify",
+              title: "Caltheris: Make it Rain, then Purify the Temple",
+              instruction:
+                "Same rain trigger as Dravakar, aimed at Caltheris' head instead.\n\n**1. Trigger the rain**\n\n- Go to the **portal in Veytharion Sanctuary** — the one opened by the cube puzzle.\n- Interact with it.\n- **The next round will rain.** It does not turn over immediately, so play the current round out.\n\n**2. Purify Caltheris**\n\n- While it is raining, make a **purple flame** (orb → drag to Pack-a-Punch → crank → collect).\n- Bring it to the **giant head at Caltheris' entrance**.\n- Shoot the flame at the head's **forehead**.\n\nThe temple is now completely purified.\n\n**If the flame does nothing,** check that it is actually raining. The interaction is gated on the weather, not just on holding a flame.\n\n**Not confirmed, but worth planning around:** if you have more than one temple sitting at this stage, one rain round may be enough to purify several. Nobody has reported testing that, so do not build a run around it.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 29.8, y: 31.2 },
+                  text: "**Veytharion Sanctuary portal** — interact to make the next round rain.",
+                },
+                {
+                  position: { x: 73, y: 62.8 },
+                  text: "**Caltheris' giant head** — purple flame to the forehead, while it rains.",
+                },
+              ],
+            },
+            {
+              id: "s5-nyxara-face-tile",
+              title: "Nyxara: The Face Tile and Shard Reflector",
+              instruction:
+                "Nyxara runs the same chain as Dravakar and Caltheris. Only the tile's activation is different — and this one is the odd one out, because it costs you a round.\n\n- Break Nyxara's shackle first.\n- Return to Nyxara and find the floor tile with the **face** on it.\n- **Interact with the plate.**\n- **Go prone on top of it.**\n- **Stay prone on the tile while the round advances.**\n\nYou have to be lying on the tile when the round rolls over, so set this up with a round nearly done rather than starting a fresh one. Keep a way to survive prone — you are not moving until it ticks.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror to raise it.",
+              solidMarkers: true,
+              locations: [{ position: { x: 23.5, y: 67.1 } }],
+            },
+            {
+              // Marker is a placeholder until the beam target is plotted
+              // properly — hence "partial" rather than confirmed.
+              id: "s5-nyxara-reflector-aim",
+              status: "partial",
+              title: "Nyxara: Aim the Reflector Below the Floor",
+              instruction:
+                "**In Nyxara the aim point is the bottom left, underneath the main floor level.** It is the only one of the three that points down off the main floor rather than at a wall or corner, so expect to be angling the mirror below you.\n\n- Shoot the mirror to move it.\n- Walk the beam down and left, under the main floor level, until it settles.\n\n**The exact spot is not pinned down yet.** The marker here is approximate — treat it as the right area, not the precise point, and expect to hunt within it. If souls will not bank in the next step, that is the thing to fix.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 22, y: 65 },
+                  text: "**Approximate aim point** — bottom left, under the main floor level. Exact spot still to be plotted.",
+                },
+                { position: { x: 23.5, y: 67.1 }, text: "**The reflector**, on the face tile." },
+              ],
+            },
+            {
+              id: "s5-nyxara-statue",
+              status: "partial",
+              title: "Nyxara: Charge the Souls and Break the Statue",
+              instruction:
+                "Same as the other two temples from here.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam lands.\n- Fully charge the Warden's Blight alternate attack and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.\n\n**The statue marker is approximate** for the same reason as the aim point above.",
+              solidMarkers: true,
+              locations: [
+                { position: { x: 22, y: 65 }, text: "**Approximate statue position** — where the beam lands, under the main floor." },
+                { position: { x: 23.5, y: 67.1 }, text: "**The mirror** — kill zombies underneath it to charge souls." },
+              ],
+            },
+            {
+              id: "s5-nyxara-orb-head",
+              title: "Nyxara: Send an Orb into the Giant Head",
+              instruction:
+                "Same as the Dravakar and Caltheris orb steps, at Nyxara's entrance.\n\n- Grapple a **purple orb** and drag it to the **Nyxara entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Nyxara head.\n\nOne piece of Nyxara left after this — the purification below.",
+              solidMarkers: true,
+              locations: [{ position: { x: 30.5, y: 67.3 } }],
+            },
+            {
+              id: "s5-nyxara-purify",
+              title: "Nyxara: Make it Rain, then Purify the Temple",
+              instruction:
+                "Same rain trigger again, aimed at Nyxara's head.\n\n**1. Trigger the rain**\n\n- Go to the **portal in Veytharion Sanctuary** — the one opened by the cube puzzle.\n- Interact with it.\n- **The next round will rain.** It does not turn over immediately, so play the current round out.\n\n**2. Purify Nyxara**\n\n- While it is raining, make a **purple flame** (orb → drag to Pack-a-Punch → crank → collect).\n- Bring it to the **giant head at Nyxara's entrance**.\n- Shoot the flame at the head's **forehead**.\n\n**Nyxara's head is the fiddly one.** The shape of the dragon head gets in the way of the forehead, so the flame often will not land where you need it. Keep trying and work different angles until it falls onto the forehead — if it is bouncing off, that is a positioning problem, not a sign you have the step wrong.\n\nThe temple is now completely purified.\n\n**If the flame does nothing,** check that it is actually raining. The interaction is gated on the weather, not just on holding a flame.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 29.8, y: 31.2 },
+                  text: "**Veytharion Sanctuary portal** — interact to make the next round rain.",
+                },
+                {
+                  position: { x: 30.5, y: 67.3 },
+                  text: "**Nyxara's giant head** — purple flame to the forehead, while it rains.",
+                },
+              ],
+            },
+            {
+              id: "s5-veytharion-face-tile",
+              title: "Veytharion: The Face Tile and Shard Reflector",
+              instruction:
+                "The fourth and last of the face tiles, and the most tedious activation of the four.\n\n- Break Veytharion's shackle first.\n- Go back into the temple and find the **pressure plate tile with the face** on it.\n- Interact with it.\n- **Jump up and down 30 times in a row**, on the tile.\n\nIt is a straight count — get set up somewhere you can hold the spot for that long, because being interrupted off the tile means starting the jumps again.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror to raise it.",
+              solidMarkers: true,
+              locations: [{ position: { x: 38, y: 39.6 } }],
+            },
+            {
+              id: "s5-veytharion-reflector-aim",
+              title: "Veytharion: Aim the Reflector at the Back Left Wall",
+              instruction:
+                "**In Veytharion the aim point is the back left wall of the chamber.**\n\n- Shoot the mirror to move it.\n- Walk the beam across to the back-left wall until it settles.\n\nSame as the other three: being a nudge off looks identical to being on target until the souls refuse to bank. If nothing charges in the next step, re-aim before grinding more kills.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 32, y: 36.4 },
+                  text: "**The aim point** — the back left wall of the chamber.",
+                },
+                { position: { x: 38, y: 39.6 }, text: "**The reflector**, on the face tile." },
+              ],
+            },
+            {
+              id: "s5-veytharion-statue",
+              title: "Veytharion: Charge the Souls and Break the Statue",
+              instruction:
+                "Same finish as the other three temples.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam meets the back-left wall.\n- Fully charge the Warden's Blight alternate attack and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.",
+              solidMarkers: true,
+              locations: [
+                { position: { x: 32, y: 36.4 }, text: "**The statue** appears where the beam meets the back left wall." },
+                { position: { x: 38, y: 39.6 }, text: "**The mirror** — kill zombies underneath it to charge souls." },
+              ],
+            },
+            {
+              id: "s5-veytharion-orb-head",
+              title: "Veytharion: Send an Orb into the Giant Head",
+              instruction:
+                "Same as the other three orb steps, at Veytharion's entrance.\n\n- Grapple a **purple orb** and drag it to the **Veytharion entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Veytharion head.\n\nOne piece of Veytharion left after this — the purification below.",
+              solidMarkers: true,
+              locations: [{ position: { x: 41.9, y: 43.6 } }],
+            },
+            {
+              id: "s5-veytharion-purify",
+              title: "Veytharion: Make it Rain, then Purify the Temple",
+              instruction:
+                "The last purification, and the easiest to set up — the rain trigger is in this temple.\n\n**1. Trigger the rain**\n\n- Go to the **portal in Veytharion Sanctuary** — the one opened by the cube puzzle.\n- Interact with it.\n- **The next round will rain.** It does not turn over immediately, so play the current round out.\n\n**2. Purify Veytharion**\n\n- While it is raining, make a **purple flame** (orb → drag to Pack-a-Punch → crank → collect).\n- Bring it to the **giant head at Veytharion's entrance**.\n- Shoot the flame at the head's **forehead**.\n\nThe temple is now completely purified.\n\n**If the flame does nothing,** check that it is actually raining. The interaction is gated on the weather, not just on holding a flame.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 29.8, y: 31.2 },
+                  text: "**Veytharion Sanctuary portal** — interact to make the next round rain.",
+                },
+                {
+                  position: { x: 41.9, y: 43.6 },
+                  text: "**Veytharion's giant head** — purple flame to the forehead, while it rains.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "stage-6",
           title: "The Warden",
           steps: [
             {
-              id: "s5-inner-sanctum",
-              status: "unconfirmed",
-              title: "Enter the Warden's Inner Sanctum",
+              id: "s6-start-final-fight",
+              title: "Prepare, then Start the Final Fight",
               instruction:
-                "**The transition from four broken shackles into the Inner Sanctum is not yet documented.**\n\nThe intended progression is clear \u2014 cleanse all four Shadowsmiths, break all four shackles, reach the Warden's Inner Sanctum, confront the Warden \u2014 but no reproducible route from the fourth shackle to the Sanctum has been published that we would stand behind.\n\nDo not follow leaked or cheated completion steps unless someone has independently reproduced them.",
+                "With all four temples purified, the final fight is available. **Get set up before you trigger it** — there is no going back out for supplies once it starts.\n\n**Bring**\n\n- **Triple Pack-a-Punched weapons.** Take everything you intend to use to tier 3.\n- **GobbleGums** — whatever you have been saving.\n- **Plenty of banked essence** for ammo and buys during the fight.\n\n**Starting it**\n\n- Go down into the **Nexus Core**, beneath Pack-a-Punch.\n- Stand on the **blue portals**.\n\nThat initiates the final fight.",
+              solidMarkers: true,
+              locations: [
+                {
+                  position: { x: 55.8, y: 55.7 },
+                  text: "**Nexus Core**, beneath Pack-a-Punch — stand on the blue portals.",
+                },
+              ],
             },
             {
-              id: "s5-warden-boss",
-              status: "unconfirmed",
-              title: "Defeat the Warden",
+              id: "s6-warden-basics",
+              title: "The Warden: Fight Basics",
               instruction:
-                "**Waiting on a legitimate, reproducible route.**\n\nThe Warden is the final confrontation, and a completion cutscene has appeared online, so the quest is finishable. However:\n\n- At least one early completion is disputed as having used cheats/tools.\n- The legitimate Veytharion corruption route is still unresolved.\n- The post-shackles boss trigger is not fully documented.\n\nThis section will be filled in once the steps are confirmed.",
+                "The whole fight runs on one loop. Get this straight before phase 1, because going for the obvious target is the wrong play.\n\n**The stun loop**\n\nThe Warden spawns **crit points**, but those are not what you shoot.\n\n- Target the **floating skulls next to him** with the Wonder Weapon.\n- Killing the skulls **stuns him**.\n- The stun exposes his real crit spot: **the tip of his tail**.\n- Burn the tail crit while the stun holds.\n\n**Grapple charges**\n\nThere are **two grapple charge locations** in the arena. **Keep using them.** The grapple is your main tool for avoiding damage for the entire fight, and running dry is what gets people killed.\n\nThe fight happens off the edge of the map, so the marker is a placement for the arena rather than a spot you walk to. The two charge points inside it are not individually mapped — find them on your first run and remember where they are.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
+            },
+            {
+              id: "s6-warden-phase-1",
+              title: "The Warden: Phase 1",
+              instruction:
+                "- Run the loop: **skulls → stun → tail crit**.\n- Keep grapple charge available the whole time.\n\n**The Ava drain**\n\nPartway through, the Warden breaks off and **goes to drain Ava**.\n\n- **Shadow souls** appear.\n- **Kill the shadow souls** to bring him back into the fight.\n\nHe will not re-engage until they are dead, so do not waste time chasing him — clear the souls.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
+            },
+            {
+              id: "s6-warden-phase-2",
+              title: "The Warden: Phase 2",
+              instruction:
+                "Same loop, with one substitution and one new hazard.\n\n**Skulls, or armour**\n\n- Kill the skulls to stun and expose the crit, exactly as in phase 1.\n- **If there are no skulls, look for shadow souls instead.** In this phase they act as his **armour**, and have to be destroyed before you can hurt him.\n\n**Ground tails**\n\n**Tails spawn out of the ground** to knock you off your feet and stun you.\n\n- Pop them quickly with the Wonder Weapon.\n- **Do not get drawn into fighting them.** They are obstacles, not a damage phase — clear what is in your way and get straight back on the Warden.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
+            },
+            {
+              id: "s6-warden-jail",
+              title: "The Warden: The Jail",
+              instruction:
+                "Between phases 2 and 3 you are **teleported into a jail**.\n\n- **You only have to survive.**\n- **There is nothing you need to kill** — it is purely timer based.\n\nPlay it defensively, use the time to reload and recover, and wait it out.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
+            },
+            {
+              id: "s6-warden-phase-3",
+              status: "partial",
+              title: "The Warden: Phase 3",
+              instruction:
+                "The ground tails return, and this time they feed a **lightning attack**.\n\n**Two ways to handle it, neither fully pinned down:**\n\n- **Destroy the tails** to disrupt the attack before it goes off.\n- **Or avoid it outright.** With the timing right you can **drop off the side of the map** — or grapple off — as it fires, and come back after.\n\nThe drop-off dodge is a timing trick rather than a reliable rotation. Practise it before you build a run around it.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
+            },
+            {
+              id: "s6-warden-phase-4",
+              status: "unconfirmed",
+              title: "The Warden: Phase 4",
+              instruction:
+                "**There is a phase 4, and its details are not known.**\n\nThe fight does not end at phase 3 — a fourth phase is confirmed to exist — but nothing about its mechanics has been supplied or independently reproduced.\n\nThis section will be filled in once someone runs it and reports back. Do not follow leaked or cheated completion steps in the meantime.",
+              solidMarkers: true,
+              locations: [{ position: { x: 33.5, y: 84.7 } }],
             },
           ],
         },
