@@ -1272,7 +1272,7 @@ export const rexInfernus: MapData = {
               id: "s1-activate-pack-a-punch",
               title: "Activate Pack-a-Punch",
               instruction:
-                "- Unlock the House doors and go downstairs to the telephone. When a new round starts, the phone will ring.\n- Answer the phone and go through the portal to the Nexus Forge.\n- Place the World Seed into the centre of the Nexus Forge.\n- Follow and defeat the two Dread skulls.\n- Interact with the Usurped Flame each drops, and carry each flame back to the Forge to ignite its matching brazier.\n- Once both sides are lit, use the crank wheels around the Forge.\n- Pack-a-Punch is now active.",
+                "- Unlock the House doors and go downstairs to the telephone. When a new round starts, the phone will ring.\n- Answer the phone — the Twins open a portal — then step through it to escape Her House.\n- At the Nexus Forge, place the **World Seed** into the centre pedestal.\n- Two caged **Dread skulls** appear, tethered to the Seed by red beams, and the objective becomes **Destroy the Dread Skulls**.\n- Follow and destroy a skull. The objective changes to **Seize the Usurped Flame** — collect it from the flaming cauldron its marker points to. Ours was in Veytharion Main Chamber.\n- Carry it back and **fire it onto the brazier**. The Usurped Flame is a one-shot carried weapon, not something you place down — the objective is literally **Fire the Usurped Flame onto the Brazier**.\n- Repeat for the second skull, so both braziers are lit.\n- Rotate the **two crank wheels** at the Forge. The objective tracks **Cranks Rotated 0/2**, and each one is hold-to-turn.\n- The Forge's rings spin up in gold. Pack-a-Punch is active.",
               icon: "/images/easteregg/flame.svg",
               path: [
                 { x: 57.1, y: 78.1 },
@@ -1297,10 +1297,34 @@ export const rexInfernus: MapData = {
                 {
                   position: { x: 54.3, y: 79 },
                   text: "**Phone:** unlock the house doors and head downstairs. When a new round starts, the phone will ring — answer it.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822104215_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104245_1.jpg",
+                  ],
                 },
                 {
                   position: { x: 54.7, y: 76 },
                   text: "**Portal:** step through to teleport to the Nexus Forge.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822104259_1.jpg",
+                  ],
+                },
+                {
+                  // Sits where the step icon does: the route walks to the
+                  // portal, and everything after it happens at the Forge.
+                  position: { x: 55.4, y: 56.8 },
+                  text: "**Nexus Forge:** World Seed into the pedestal, destroy both Dread skulls, fire each Usurped Flame onto its brazier, then turn the two cranks.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822104341_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104347_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104355_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104443_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104459_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104501_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104719_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104727_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104808_1.jpg",
+                  ],
                 },
               ],
             },
@@ -1310,8 +1334,18 @@ export const rexInfernus: MapData = {
               id: "s1-house-symbol-sequence",
               title: "Start the House Symbol Sequence",
               instruction:
-                "**Do this as early as you can.** It starts a four-round timer you cannot skip later, and you will not need the result until stage 3.\n\n- Look underneath the roof edge/eaves of Her House.\n- Find the small basketball tucked under it.\n- Shoot it.\n\nOver the next **four rounds**, one new symbol appears on the House each round. **Write down the order they appear in** \u2014 you have to reproduce it exactly later.\n\n**Do not shoot the symbols yet.** They are only entered during an exfil round, in stage 3.",
+                "**Do this as early as you can.** It starts a four-round timer you cannot skip later, and you will not need the result until stage 3.\n\n- Look underneath the roof edge/eaves of Her House.\n- Find the small basketball tucked under it.\n- Shoot it.\n\n**You do not have to be at the house.** It is a small target, but it can be scoped from across the map.\n\nOver the next **four rounds**, one new symbol appears on the House each round, glowing blue on the front of the building. **Write down the order they appear in** — you have to reproduce it exactly later.\n\nThey are bright enough to read from a distance, so you can keep playing and just look back at the House each round instead of walking to it.\n\n**Do not shoot the symbols yet.** They are only entered during an exfil round, in stage 3.",
               // Not plotted yet — needs the basketball spot on Her House roof.
+              // Keeping it location-less is what makes this gallery reachable:
+              // revealUnits() only emits a step-level unit for steps with no
+              // locations, and a location never falls back to step images.
+              revealImages: [
+                "/images/easteregg/rex-infernus/20260822110122_1.jpg",
+                "/images/easteregg/rex-infernus/20260822111434_1.jpg",
+                "/images/easteregg/rex-infernus/20260822111612_1.jpg",
+                "/images/easteregg/rex-infernus/20260822111655_1.jpg",
+                "/images/easteregg/rex-infernus/20260822111949_1.jpg",
+              ],
             },
           ],
         },
@@ -1337,31 +1371,77 @@ export const rexInfernus: MapData = {
               // destination — no `icon`/`iconPosition` on this one.
               solidMarkers: true,
               locations: [
-                { position: { x: 72.1, y: 38.8 } }, // 1 — start
-                { position: { x: 70.2, y: 39.4 } }, // 2 — 5th path point
-                { position: { x: 69.4, y: 40.9 } }, // 3 — final point (wall)
+                {
+                  // Prerequisite, and off the route — dashed, since a semtex
+                  // does the job just as well as the perk.
+                  position: { x: 88.9, y: 44.8 },
+                  solid: false,
+                  text: "**Prerequisite:** buy **PhD Flopper** on Ruinas Insula — or skip it and bring a **semtex** instead.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822105518_1.jpg",
+                  ],
+                },
+                {
+                  // start
+                  position: { x: 72.1, y: 38.8 },
+                  text: "**Dravakar Main Chamber:** stand inside and look back toward the entrance. The small detached ledge is above it.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822105707_1.jpg",
+                  ],
+                },
+                {
+                  // 5th path point
+                  position: { x: 70.2, y: 39.4 },
+                  text: "**Wall jump** (or grapple) from that ledge across to the top rafter.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822105719_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822105730_1.jpg",
+                  ],
+                },
+                {
+                  // final point (wall)
+                  position: { x: 69.4, y: 40.9 },
+                  text: "**The breakable wall** on the right-hand side. Blow it open, then take the Fragment of Nyxara.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822105741_1.jpg",
+                  ],
+                },
               ],
             },
             {
               id: "s2-purple-astral-flame",
               title: "Create the Purple Astral Flame",
               instruction:
-                "- Obtain a grapple.\n- Find a floating purple orb.\n- Grapple the orb and drag it to the centre of Pack-a-Punch.\n- When it is close enough, the orb starts orbiting.\n- Turn the crank on Pack-a-Punch.\n- The Forge absorbs the orb and its fire turns purple.\n- Pick up a purple flame.\n\n**You will repeat this loop many times later:** purple orb \u2192 drag to Pack-a-Punch \u2192 crank \u2192 collect purple flame.",
+                "- Obtain a grapple. It is the **Void Claw**, and it takes a slot of its own — hold its slot key (5 by default) to aim and fire it.\n- Find a floating **purple orb**.\n- Grapple the orb and drag it to the centre of Pack-a-Punch.\n- When it is close enough, the orb starts **orbiting** the Forge pool.\n- Turn the **crank** on the stand directly in front of the pool.\n- The Forge absorbs the orb, and the cauldron beside it lights up **purple**.\n- Collect the purple flame from that cauldron.\n\n**You will repeat this loop many times later:** purple orb → drag to Pack-a-Punch → crank → collect purple flame.",
               path: [
                 { x: 56.7, y: 50.6 },
                 { x: 55.9, y: 55.8 },
               ],
               solidMarkers: true,
               locations: [
-                { position: { x: 56.7, y: 50.6 } }, // 1 — grapple orb location
-                { position: { x: 55.9, y: 55.8 } }, // 2 — Pack-a-Punch
+                {
+                  // 1 — grapple orb location
+                  position: { x: 56.7, y: 50.6 },
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822104817_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104831_1.jpg",
+                  ],
+                },
+                {
+                  // 2 — Pack-a-Punch
+                  position: { x: 55.9, y: 55.8 },
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822104845_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822104950_1.jpg",
+                  ],
+                },
               ],
             },
             {
               id: "s2-nyxara-crystal-laser",
               title: "Complete Nyxara's Crystal Laser",
               instruction:
-                "- Take a purple flame from the brazier and run to the far side of Nyxara's Sanctuary\n- Throw the purple fire at the giant eye across the gap\n- A purple laser beam activates.\n- Use a grapple on each crystal the laser is currently hitting to move its position. Move each crystal to make it hit the next crystal.\n- Eventually the beam will reach a position where a crystal is missing.\n- Grapple up to the empty mounting point and insert the Fragment of Nyxara.\n- Continue rotating the crystals until the beam reaches the final receiver and opens the door to the hidden area.\n\n**Tip:** The beam appears to be timed (or perhaps ends based on the round end), so do not start until everyone is ready and try to keep a zombie alive.",
+                "- Take a purple flame from the brazier at the Nexus Forge. It is the **Astral Flame**, and ours came with **three charges** — a missed throw does not cost you the attempt.\n- Run to the far side of Nyxara's Sanctuary.\n- Throw the purple fire at the **giant eye** across the gap. The eye lights purple when it connects.\n- A purple laser beam activates, coming down from above.\n- Use a grapple on each crystal the laser is currently hitting to move its position. Move each crystal to make it hit the next crystal.\n- Eventually the beam will reach a position where a crystal is missing.\n- Grapple up to the empty mounting point and insert the Fragment of Nyxara.\n- Continue rotating the crystals until the beam reaches the final receiver and opens the door to the hidden area, in **Nyxara Main Chamber**.\n\n**Tip:** The beam appears to be timed (or perhaps ends based on the round end), so do not start until everyone is ready and try to keep a zombie alive.",
               icon: "/images/easteregg/star.svg",
               path: [
                 { x: 55.4, y: 60.8 },
@@ -1375,14 +1455,49 @@ export const rexInfernus: MapData = {
               iconPosition: { x: 5.9, y: 67.4 },
               solidMarkers: true,
               locations: [
-                { position: { x: 55.4, y: 60.8 } }, // 1 — flame location
+                {
+                  // 1 — flame location
+                  position: { x: 55.4, y: 60.8 },
+                  text: "**Nexus Forge brazier** — take the Astral Flame here.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110207_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110210_1.jpg",
+                  ],
+                },
+                {
+                  // Last path point: the near lip of the gap you throw from.
+                  position: { x: 9.4, y: 67.2 },
+                  text: "**Throwing spot** — far side of Nyxara's Sanctuary, looking across the gap at the eye.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110224_1.jpg",
+                  ],
+                },
+                {
+                  // Same spot the step icon uses — across the gap.
+                  position: { x: 5.9, y: 67.4 },
+                  text: "**The giant eye.** It lights purple on a hit, and the beam drops in from above.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110229_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110231_1.jpg",
+                  ],
+                },
+                {
+                  // Room-level marker (the area label's position) — the
+                  // individual crystal mounts aren't plotted.
+                  position: { x: 22.9, y: 67.1 },
+                  text: "**Nyxara Main Chamber** — where the crystals are grappled and the door finally opens. Marks the room, not a single crystal.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110303_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110325_1.jpg",
+                  ],
+                },
               ],
             },
             {
               id: "s2-feed-the-tree",
               title: "Feed the Tree and Enter the Silent Forest",
               instruction:
-                "- Enter the newly opened room and fall into the Nyxara Inner Sanctuary\n- Interact with the large corrupted tree/vine\n- It begins draining your health/life essence\n- Survive while the process completes\n- When the seed becomes available, interact with it.\n- You are transported to the Silent Area / Forest\n\n**Note:** If you cannot interact with the seed, you may need to advance a round.",
+                "- Enter the newly opened room and fall into the Nyxara Inner Sanctuary.\n- **A Deathspinner guards the way in** — a named elite with its own health bar. Clear it before you start the ritual rather than during it.\n- Interact with the large corrupted tree/vine.\n- A **Vine Life** bar appears and the vine begins draining your health/life essence.\n- **Survive while it runs.** Zombies pour into the room and your health drops fast — the danger is the horde plus the drain together, not the tree itself. Go in healthy, with a way to break contact.\n- When the seed becomes available in the centre of the tree, interact with it.\n- You are transported to the Silent Area / Forest.\n\n**Note:** If you cannot interact with the seed, you may need to advance a round.",
               icon: "/images/easteregg/skull.svg",
               path: [
                 { x: 25.3, y: 75.1 },
@@ -1392,7 +1507,23 @@ export const rexInfernus: MapData = {
               ],
               solidMarkers: true,
               locations: [
-                { position: { x: 25.3, y: 75.1 } }, // 1
+                {
+                  // 1 — the way in
+                  position: { x: 25.3, y: 75.1 },
+                  text: "**Way in** — the corridor down to the Inner Sanctuary. A **Deathspinner** holds the doorway.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110334_1.jpg",
+                  ],
+                },
+                {
+                  // Last path point, where the step icon also sits.
+                  position: { x: 10.1, y: 75.3 },
+                  text: "**The tree** — interact, survive the Vine Life drain, then take the seed from its centre.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110409_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110428_1.jpg",
+                  ],
+                },
               ],
             },
             {
@@ -1401,9 +1532,29 @@ export const rexInfernus: MapData = {
               id: "s2-warden-blight-parts",
               title: "Collect All 3 Warden's Blight Parts",
               instruction:
-                "Collect all 3 Warden's Blight parts scattered around the Silent Forest.\n\n**Item 1 — Cave:** Go toward the very rear of the forest, find the charred body near the cave entrance and interact with it, then collect the part.\n\n**Item 2 — Rock:** Find another corpse in the central area leaning against a large rock, interact and collect the part.\n\n**Item 3 — Burned Cabin:** Find the body and floorboards, melee the plank and interact with the item, then collect the part.\n\nYou can collect all three during one Forest visit if you're fast enough.\n\n**If you get kicked out before getting them all:**\n- Advance the round\n- Feed/use the tree fruit again\n- Return and collect the missing part",
+                "Collect all 3 Warden's Blight parts scattered around the Silent Forest. The pieces are bow components — Takeo's dialogue in the Forest refers to a bow.\n\n**The Forest strips your HUD.** No minimap and no ammo counter, so navigate by the landmarks below. Spectral figures drift through the trees the whole time you are searching.\n\n**Every part works the same way:** find the body, interact with it, and the part drops to the ground with a yellow outline. **Picking it up is a second, separate interaction** — it is easy to interact with the corpse and walk off thinking you already have the part.\n\n**Item 1 — Cave:** Go toward the very rear of the forest, find the charred body near the cave entrance and interact with it, then collect the part.\n\n**Item 2 — Rock:** Find another corpse in the central area leaning against a large rock, interact and collect the part.\n\n**Item 3 — Burned Cabin:** Find the body and floorboards, melee the plank to break it open, then interact and collect the part from the dirt underneath.\n\nYou can collect all three during one Forest visit if you're fast enough.\n\n**If you get kicked out before getting them all:**\n- Advance the round\n- Feed/use the tree fruit again\n- Return and collect the missing part",
               solidMarkers: true,
-              locations: [{ position: { x: 30.4, y: 84.3 } }],
+              locations: [
+                {
+                  // The Silent Forest is its own space, so this marker is a
+                  // placement rather than a real position. All three parts
+                  // share it — no in-forest coordinates to split them by.
+                  position: { x: 30.4, y: 84.3 },
+                  text: "**Silent Forest** — cave body, rock body, then the burned cabin floorboards, in that order.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110455_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110457_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110541_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110549_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110551_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110657_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110651_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110659_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110702_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110741_1.jpg",
+                  ],
+                },
+              ],
             },
             {
               // "Central lever" in the source notes reads as the front lever
@@ -1413,7 +1564,7 @@ export const rexInfernus: MapData = {
               id: "s2-four-pillars",
               title: "Solve the Four Pillars",
               instruction:
-                "Go to Dravakar's Sanctuary. Four pillars each carry a celestial symbol: **galaxy**, **moon**, **star**, and **runner** (the runner is the comet/asteroid).\n\nFour levers control them \u2014 the numbers match the circles on the map:\n- Marker 4, left stairwell \u2192 rotates the two left pillars\n- Marker 3, right stairwell \u2192 rotates the two right pillars\n- Marker 2, front lever by the blue writing \u2192 rotates the front two pillars\n- Marker 5, centre pillar \u2192 **submits your answer \u2014 do not touch it until the end**\n\nInteract with the blue writing (marker 1) and Dravakar speaks one of four riddles. Note which one you get, then use the matching solution below.\n\n**These counts assume no pillar has been moved yet.** If you have already rotated some, use the end directions instead to work out what is left.\n\n**Riddle 1** \u2014 \"I remember the runner that travels to stars, while moons and galaxies stay true.\"\n- Levers: front \u00d72, right stairwell \u00d73\n- Ends as: runner \u2192 west, moon \u2192 north, galaxy \u2192 south, star \u2192 unchanged\n\n**Riddle 2** \u2014 \"I drift to the runner that travels to the moon, who borrows from galaxies when stars stay true.\"\n- Levers: left stairwell \u00d73, front \u00d72, right stairwell \u00d71\n- Ends as: runner \u2192 north, moon \u2192 south, galaxy \u2192 east, star \u2192 west\n\n**Riddle 3** \u2014 \"I drift to stars that remember moons, who borrow the runner that travels the galaxy.\"\n- Levers: left stairwell \u00d71, front \u00d72, right stairwell \u00d72\n- Ends as: runner \u2192 south, star \u2192 north, moon \u2192 east, galaxy \u2192 west\n\n**Riddle 4** \u2014 \"I remember galaxies that drift to moons, who borrow the runner that travels the stars.\"\n- Levers: left stairwell \u00d72, right stairwell \u00d72\n- An older community write-up gives the same answer as: right, right, left, left, submit.\n\nWhen the pillars are set, use the centre pillar lever (marker 5) to submit. If correct, the pillar lowers and reveals an opening in the roof. If wrong, you may have to wait for the next round to retry.",
+                "Go to Dravakar's Sanctuary. Four pillars each carry a celestial symbol: **galaxy**, **moon**, **star**, and **runner** (the runner is the comet/asteroid).\n\nFour levers control them \u2014 the numbers match the circles on the map:\n- Marker 4, left stairwell \u2192 rotates the two left pillars\n- Marker 3, right stairwell \u2192 rotates the two right pillars\n- Marker 2, front lever by the blue writing \u2192 rotates the front two pillars\n- Marker 5, centre pillar \u2192 **submits your answer \u2014 do not touch it until the end**\n\n**Trigger the riddle at the blue writing (marker 1).** Dravakar speaks one of four riddles — note which one you get, then use the matching solution below.\n\n**Shooting the blue text appears to be what triggers it.** No interact prompt showed on the wall in our run, so if standing at it does nothing, put a round into the writing. Not confirmed as the only way to set it off.\n\n**These counts assume no pillar has been moved yet.** If you have already rotated some, use the end directions instead to work out what is left.\n\n**Riddle 1** \u2014 \"I remember the runner that travels to stars, while moons and galaxies stay true.\"\n- Levers: front \u00d72, right stairwell \u00d73\n- Ends as: runner \u2192 west, moon \u2192 north, galaxy \u2192 south, star \u2192 unchanged\n\n**Riddle 2** \u2014 \"I drift to the runner that travels to the moon, who borrows from galaxies when stars stay true.\"\n- Levers: left stairwell \u00d73, front \u00d72, right stairwell \u00d71\n- Ends as: runner \u2192 north, moon \u2192 south, galaxy \u2192 east, star \u2192 west\n\n**Riddle 3** \u2014 \"I drift to stars that remember moons, who borrow the runner that travels the galaxy.\"\n- Levers: left stairwell \u00d71, front \u00d72, right stairwell \u00d72\n- Ends as: runner \u2192 south, star \u2192 north, moon \u2192 east, galaxy \u2192 west\n\n**Riddle 4** \u2014 \"I remember galaxies that drift to moons, who borrow the runner that travels the stars.\"\n- Levers: left stairwell \u00d72, right stairwell \u00d72\n- An older community write-up gives the same answer as: right, right, left, left, submit.\n\nWhen the pillars are set, use the centre pillar lever (marker 5) to submit. If correct, the pillar lowers and reveals an opening in the roof. If wrong, you may have to wait for the next round to retry.",
               path: [
                 { x: 78.4, y: 32.6 },
                 { x: 81.3, y: 33.7 },
@@ -1427,20 +1578,79 @@ export const rexInfernus: MapData = {
               ],
               solidMarkers: true,
               locations: [
-                { position: { x: 78.4, y: 32.6 }, text: "Interact with the blue writing to hear Dravakar's riddle — note which one you get." }, // 1 — blue wall
-                { position: { x: 81.3, y: 33.7 }, text: "Front lever — rotates the front two pillars." }, // 2 — front lever
-                { position: { x: 85.7, y: 33.2 }, text: "Right stairwell lever — rotates the two right pillars." }, // 3 — right lever
-                { position: { x: 79.7, y: 26 }, text: "Left stairwell lever — rotates the two left pillars." }, // 4 — left lever
-                { position: { x: 81.1, y: 30.1 }, text: "Center lever — submits your answer. Do not use until the end." }, // 5 — central pillar lever
+                {
+                  // 1 — blue wall
+                  position: { x: 78.4, y: 32.6 },
+                  text: "The blue writing — shooting it appears to trigger Dravakar's riddle. Note which one you get.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110853_1.jpg",
+                  ],
+                },
+                {
+                  // 2 — front lever
+                  position: { x: 81.3, y: 33.7 },
+                  text: "Front lever — rotates the front two pillars.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110907_1.jpg",
+                  ],
+                },
+                {
+                  // 3 — right lever
+                  position: { x: 85.7, y: 33.2 },
+                  text: "Right stairwell lever — rotates the two right pillars.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110916_1.jpg",
+                  ],
+                },
+                {
+                  // 4 — left lever
+                  position: { x: 79.7, y: 26 },
+                  text: "Left stairwell lever — rotates the two left pillars.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110926_1.jpg",
+                  ],
+                },
+                {
+                  // 5 — central pillar lever
+                  position: { x: 81.1, y: 30.1 },
+                  text: "Centre lever — submits your answer. Do not use until the end. Its gallery also shows all four pillar symbols (moon, star, runner, galaxy) for identification, and the roof opening you get on a correct answer.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822110944_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110930_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110932_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110934_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822110940_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822111313_1.jpg",
+                  ],
+                },
               ],
             },
             {
               id: "s2-forge-warden-blight",
               title: "Forge and Pack-a-Punch Warden's Blight",
               instruction:
-                "- Look upward.\n- A previously inaccessible room has opened.\n- Grapple up.\n- Interact with the forge/anvil/build point.\n- The three Forest components create the Warden's Blight.\n- Take the Wonder Weapon.\n- Pack-a-Punch it to unlock its alt charge attack (this is needed for next step)",
+                "- Look upward. The centre pillar has sunk and a previously inaccessible room — **Dravakar Inner Sanctum** — is open above you.\n- Grapple up.\n- Interact with the anvil on the raised dais.\n- The three Forest components forge into the **Warden's Blight**, a bow.\n- Take the Wonder Weapon.\n- **Pack-a-Punch it.** Not optional — the packed version is what unlocks the charged attack every later step depends on.\n\n**The two fire modes, once packed:**\n\n- **Aether Bolt** — tap fire. The normal shot.\n- **Cyclone Shot** — **hold** fire. This is the \"fully charged alternate attack\" that the rest of the walkthrough keeps asking for: webs, face tiles, shard reflectors, statues and orbs all want a held Cyclone Shot.\n\nThe HUD showed the packed weapon as **Seelye and Cashier**.",
               solidMarkers: true,
-              locations: [{ position: { x: 82, y: 29.3 } }],
+              locations: [
+                {
+                  // The build room, above the sunken centre pillar.
+                  position: { x: 82, y: 29.3 },
+                  text: "**Dravakar Inner Sanctum** — grapple up through the opened roof to the anvil.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822111313_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822111326_1.jpg",
+                    "/images/easteregg/rex-infernus/20260822111334_1.jpg",
+                  ],
+                },
+                {
+                  // Packing happens back at Pack-a-Punch, not in the Sanctum.
+                  position: { x: 55.9, y: 55.8 },
+                  text: "**Pack-a-Punch** — pack the Blight here to unlock Cyclone Shot, the held charge attack later steps need.",
+                  revealImages: [
+                    "/images/easteregg/rex-infernus/20260822111410_1.jpg",
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -1499,7 +1709,7 @@ export const rexInfernus: MapData = {
               id: "s4-clear-the-webs",
               title: "Clear the Webs",
               instruction:
-                "**1. Clear the normal webbing**\n\nUnderneath Pack-a-Punch, in the Nexus Core, the exposed gears are covered in webs. Fully charge the Warden's Blight alternate attack and destroy every web that responds to it.\n\n**2. Clear the final web**\n\nThe last, stubborn web will not break with the Wonder Weapon. Make another purple flame (orb \u2192 drag to Pack-a-Punch \u2192 crank \u2192 collect) and shoot that web with the flame instead. As a rule: if a web refuses the charged Wonder Weapon, use a purple flame on it.\n\n**3. Crank the Forge, then run underneath**\n\n- Go to the normal Pack-a-Punch Forge crank and turn it. **The lower control will not work until you have done this.**\n- Immediately run underneath Pack-a-Punch, toward Wunderfizz.\n- Interact with the lever in front of Wunderfizz \u2014 the one you could not use before.\n\n**Treat this as timed.** The reproduced sequence is crank \u2192 sprint underneath \u2192 activate. It has been done solo in that order, so two players operating controls at once does not appear to be required.\n\nOnce the lower control succeeds, the three large Forge/ring levers become usable on the top side of the Nexus Forge, against the pillars.",
+                "**1. Clear the normal webbing**\n\nUnderneath Pack-a-Punch, in the Nexus Core, the exposed gears are covered in webs. Fully charge **Cyclone Shot** (hold fire) and destroy every web that responds to it.\n\n**2. Clear the final web**\n\nThe last, stubborn web will not break with a Cyclone Shot. Make another purple flame (orb \u2192 drag to Pack-a-Punch \u2192 crank \u2192 collect) and shoot that web with the flame instead. As a rule: if a web refuses a charged Cyclone Shot, use a purple flame on it.\n\n**3. Crank the Forge, then run underneath**\n\n- Go to the normal Pack-a-Punch Forge crank and turn it. **The lower control will not work until you have done this.**\n- Immediately run underneath Pack-a-Punch, toward Wunderfizz.\n- Interact with the lever in front of Wunderfizz \u2014 the one you could not use before.\n\n**Treat this as timed.** The reproduced sequence is crank \u2192 sprint underneath \u2192 activate. It has been done solo in that order, so two players operating controls at once does not appear to be required.\n\nOnce the lower control succeeds, the three large Forge/ring levers become usable on the top side of the Nexus Forge, against the pillars.",
               solidMarkers: true,
               locations: [{ position: { x: 55.3, y: 58.2 } }],
             },
@@ -1596,7 +1806,7 @@ export const rexInfernus: MapData = {
               id: "s5-dravakar-face-tile",
               title: "Dravakar: The Face Tile and Shard Reflector",
               instruction:
-                "**Breaking the shackle does not finish a temple.** Each Shadowsmith has a further chain after it, and Dravakar's is the one that has been run start to finish.\n\n- Return to the **Dravakar main chamber**.\n- Reveal the floor tile with the **face** on it.\n- Interact with the tile and let the **quote** play out.\n- Then kill a zombie with a **frag grenade** directly on top of the tile.\n\n**The grenade kill has to land on the tile itself**, not beside it. Cook or place the grenade on the tile and walk a zombie onto it rather than throwing into a pack nearby.\n\nA **shard reflector** is revealed.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the reflector with it.\n\nThe reflector comes up and can now be aimed.",
+                "**Breaking the shackle does not finish a temple.** Each Shadowsmith has a further chain after it, and Dravakar's is the one that has been run start to finish.\n\n- Return to the **Dravakar main chamber**.\n- Reveal the floor tile with the **face** on it.\n- Interact with the tile and let the **quote** play out.\n- Then kill a zombie with a **frag grenade** directly on top of the tile.\n\n**The grenade kill has to land on the tile itself**, not beside it. Cook or place the grenade on the tile and walk a zombie onto it rather than throwing into a pack nearby.\n\nA **shard reflector** is revealed.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the reflector with it.\n\nThe reflector comes up and can now be aimed.",
               solidMarkers: true,
               locations: [{ position: { x: 70, y: 41.2 } }],
             },
@@ -1618,7 +1828,7 @@ export const rexInfernus: MapData = {
               id: "s5-dravakar-statue",
               title: "Dravakar: Charge the Souls and Break the Statue",
               instruction:
-                "With the reflector held on the corner point:\n\n- **Kill zombies underneath the mirror.** The souls charge it.\n- Keep killing there until a **statue of Dravakar** is revealed.\n\n**If souls are not banking,** the beam has drifted off the corner point, or was never quite on it. Go back and re-aim before grinding more kills.\n\n**Break the statue**\n\n- Fully charge the Warden's Blight alternate attack.\n- **Shoot the statue in the head.**\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue of Dravakar.",
+                "With the reflector held on the corner point:\n\n- **Kill zombies underneath the mirror.** The souls charge it.\n- Keep killing there until a **statue of Dravakar** is revealed.\n\n**If souls are not banking,** the beam has drifted off the corner point, or was never quite on it. Go back and re-aim before grinding more kills.\n\n**Break the statue**\n\n- Fully charge **Cyclone Shot** (hold fire).\n- **Shoot the statue in the head.**\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue of Dravakar.",
               solidMarkers: true,
               locations: [{ position: { x: 70, y: 41.2 } }],
             },
@@ -1626,7 +1836,7 @@ export const rexInfernus: MapData = {
               id: "s5-dravakar-orb-head",
               title: "Dravakar: Send an Orb into the Giant Head",
               instruction:
-                "The last piece is at the **giant head over the Dravakar entrance**.\n\n- Grapple a **purple orb** and pull it beneath the giant head.\n- Hold it there, directly under the head.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot drives the orb up into the head.\n\nOne piece of Dravakar left after this — the purification below.",
+                "The last piece is at the **giant head over the Dravakar entrance**.\n\n- Grapple a **purple orb** and pull it beneath the giant head.\n- Hold it there, directly under the head.\n- Fully charge **Cyclone Shot** (hold fire) and shoot the orb.\n\nThe charged shot drives the orb up into the head.\n\nOne piece of Dravakar left after this — the purification below.",
               solidMarkers: true,
               locations: [{ position: { x: 65.1, y: 45.9 } }],
             },
@@ -1653,7 +1863,7 @@ export const rexInfernus: MapData = {
               id: "s5-caltheris-face-tile",
               title: "Caltheris: The Face Tile and Shard Reflector",
               instruction:
-                "Caltheris follows the same shape as Dravakar: a face tile, a shard reflector, a soul charge and a statue. Only the tile's activation differs.\n\n- Break Caltheris' shackle first.\n- Return to Caltheris' chamber and find the floor tile with the **face** on it.\n- **Stand on the plate** and interact with it.\n- **Stay on the plate** and **aim down sights at the Mystery Box** for **15-20 seconds**.\n\nThe tile slides away and reveals another **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror with it.\n\nYou need the Mystery Box in view from the plate, so where the box currently sits matters. Do not step off the plate while holding ADS — the timer is on standing there aiming at it.",
+                "Caltheris follows the same shape as Dravakar: a face tile, a shard reflector, a soul charge and a statue. Only the tile's activation differs.\n\n- Break Caltheris' shackle first.\n- Return to Caltheris' chamber and find the floor tile with the **face** on it.\n- **Stand on the plate** and interact with it.\n- **Stay on the plate** and **aim down sights at the Mystery Box** for **15-20 seconds**.\n\nThe tile slides away and reveals another **mirror reflector**.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the mirror with it.\n\nYou need the Mystery Box in view from the plate, so where the box currently sits matters. Do not step off the plate while holding ADS — the timer is on standing there aiming at it.",
               solidMarkers: true,
               locations: [{ position: { x: 79.9, y: 62.5 } }],
             },
@@ -1675,7 +1885,7 @@ export const rexInfernus: MapData = {
               id: "s5-caltheris-statue",
               title: "Caltheris: Charge the Souls and Break the Statue",
               instruction:
-                "- **Kill zombies underneath the mirror** to charge souls, the same as Dravakar.\n- Keep killing until a **statue head** is revealed — it appears on the wall where the laser was landing.\n\n**Break the statue**\n\n- Fully charge the Warden's Blight alternate attack.\n- **Shoot the statue** with it.\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue.",
+                "- **Kill zombies underneath the mirror** to charge souls, the same as Dravakar.\n- Keep killing until a **statue head** is revealed — it appears on the wall where the laser was landing.\n\n**Break the statue**\n\n- Fully charge **Cyclone Shot** (hold fire).\n- **Shoot the statue** with it.\n- Four **shadow souls** spawn.\n- Kill all four shadow souls.\n- Then destroy the statue.",
               solidMarkers: true,
               locations: [
                 { position: { x: 85.8, y: 55.8 }, text: "**The statue** appears where the beam meets the wall." },
@@ -1686,7 +1896,7 @@ export const rexInfernus: MapData = {
               id: "s5-caltheris-orb-head",
               title: "Caltheris: Send an Orb into the Giant Head",
               instruction:
-                "**Identical to the Dravakar orb step**, at Caltheris' own entrance.\n\n- Grapple a **purple orb** and pull it to the **Caltheris entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Caltheris head.\n\nOne piece of Caltheris left after this — the purification below.",
+                "**Identical to the Dravakar orb step**, at Caltheris' own entrance.\n\n- Grapple a **purple orb** and pull it to the **Caltheris entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge **Cyclone Shot** (hold fire) and shoot the orb.\n\nThe charged shot raises the orb up into the Caltheris head.\n\nOne piece of Caltheris left after this — the purification below.",
               solidMarkers: true,
               locations: [{ position: { x: 73, y: 62.8 } }],
             },
@@ -1711,7 +1921,7 @@ export const rexInfernus: MapData = {
               id: "s5-nyxara-face-tile",
               title: "Nyxara: The Face Tile and Shard Reflector",
               instruction:
-                "Nyxara runs the same chain as Dravakar and Caltheris. Only the tile's activation is different — and this one is the odd one out, because it costs you a round.\n\n- Break Nyxara's shackle first.\n- Return to Nyxara and find the floor tile with the **face** on it.\n- **Interact with the plate.**\n- **Go prone on top of it.**\n- **Stay prone on the tile while the round advances.**\n\nYou have to be lying on the tile when the round rolls over, so set this up with a round nearly done rather than starting a fresh one. Keep a way to survive prone — you are not moving until it ticks.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror to raise it.",
+                "Nyxara runs the same chain as Dravakar and Caltheris. Only the tile's activation is different — and this one is the odd one out, because it costs you a round.\n\n- Break Nyxara's shackle first.\n- Return to Nyxara and find the floor tile with the **face** on it.\n- **Interact with the plate.**\n- **Go prone on top of it.**\n- **Stay prone on the tile while the round advances.**\n\nYou have to be lying on the tile when the round rolls over, so set this up with a round nearly done rather than starting a fresh one. Keep a way to survive prone — you are not moving until it ticks.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the mirror to raise it.",
               solidMarkers: true,
               locations: [{ position: { x: 23.5, y: 67.1 } }],
             },
@@ -1737,7 +1947,7 @@ export const rexInfernus: MapData = {
               status: "partial",
               title: "Nyxara: Charge the Souls and Break the Statue",
               instruction:
-                "Same as the other two temples from here.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam lands.\n- Fully charge the Warden's Blight alternate attack and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.\n\n**The statue marker is approximate** for the same reason as the aim point above.",
+                "Same as the other two temples from here.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam lands.\n- Fully charge **Cyclone Shot** (hold fire) and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.\n\n**The statue marker is approximate** for the same reason as the aim point above.",
               solidMarkers: true,
               locations: [
                 { position: { x: 22, y: 65 }, text: "**Approximate statue position** — where the beam lands, under the main floor." },
@@ -1748,7 +1958,7 @@ export const rexInfernus: MapData = {
               id: "s5-nyxara-orb-head",
               title: "Nyxara: Send an Orb into the Giant Head",
               instruction:
-                "Same as the Dravakar and Caltheris orb steps, at Nyxara's entrance.\n\n- Grapple a **purple orb** and drag it to the **Nyxara entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Nyxara head.\n\nOne piece of Nyxara left after this — the purification below.",
+                "Same as the Dravakar and Caltheris orb steps, at Nyxara's entrance.\n\n- Grapple a **purple orb** and drag it to the **Nyxara entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge **Cyclone Shot** (hold fire) and shoot the orb.\n\nThe charged shot raises the orb up into the Nyxara head.\n\nOne piece of Nyxara left after this — the purification below.",
               solidMarkers: true,
               locations: [{ position: { x: 30.5, y: 67.3 } }],
             },
@@ -1773,7 +1983,7 @@ export const rexInfernus: MapData = {
               id: "s5-veytharion-face-tile",
               title: "Veytharion: The Face Tile and Shard Reflector",
               instruction:
-                "The fourth and last of the face tiles, and the most tedious activation of the four.\n\n- Break Veytharion's shackle first.\n- Go back into the temple and find the **pressure plate tile with the face** on it.\n- Interact with it.\n- **Jump up and down 30 times in a row**, on the tile.\n\nIt is a straight count — get set up somewhere you can hold the spot for that long, because being interrupted off the tile means starting the jumps again.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge the Warden's Blight alternate attack.\n- Shoot the mirror to raise it.",
+                "The fourth and last of the face tiles, and the most tedious activation of the four.\n\n- Break Veytharion's shackle first.\n- Go back into the temple and find the **pressure plate tile with the face** on it.\n- Interact with it.\n- **Jump up and down 30 times in a row**, on the tile.\n\nIt is a straight count — get set up somewhere you can hold the spot for that long, because being interrupted off the tile means starting the jumps again.\n\nThe tile opens and reveals the **mirror reflector**.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the mirror to raise it.",
               solidMarkers: true,
               locations: [{ position: { x: 38, y: 39.6 } }],
             },
@@ -1795,7 +2005,7 @@ export const rexInfernus: MapData = {
               id: "s5-veytharion-statue",
               title: "Veytharion: Charge the Souls and Break the Statue",
               instruction:
-                "Same finish as the other three temples.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam meets the back-left wall.\n- Fully charge the Warden's Blight alternate attack and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.",
+                "Same finish as the other three temples.\n\n- **Kill zombies underneath the mirror** to charge souls.\n- Keep killing until the **statue** is revealed where the beam meets the back-left wall.\n- Fully charge **Cyclone Shot** (hold fire) and **shoot the statue**.\n- Four **shadow souls** spawn — kill all four.\n- Then destroy the statue.",
               solidMarkers: true,
               locations: [
                 { position: { x: 32, y: 36.4 }, text: "**The statue** appears where the beam meets the back left wall." },
@@ -1806,7 +2016,7 @@ export const rexInfernus: MapData = {
               id: "s5-veytharion-orb-head",
               title: "Veytharion: Send an Orb into the Giant Head",
               instruction:
-                "Same as the other three orb steps, at Veytharion's entrance.\n\n- Grapple a **purple orb** and drag it to the **Veytharion entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge the Warden's Blight alternate attack and shoot the orb.\n\nThe charged shot raises the orb up into the Veytharion head.\n\nOne piece of Veytharion left after this — the purification below.",
+                "Same as the other three orb steps, at Veytharion's entrance.\n\n- Grapple a **purple orb** and drag it to the **Veytharion entrance**.\n- Hold it directly beneath the **head above the entrance**.\n- Fully charge **Cyclone Shot** (hold fire) and shoot the orb.\n\nThe charged shot raises the orb up into the Veytharion head.\n\nOne piece of Veytharion left after this — the purification below.",
               solidMarkers: true,
               locations: [{ position: { x: 41.9, y: 43.6 } }],
             },
