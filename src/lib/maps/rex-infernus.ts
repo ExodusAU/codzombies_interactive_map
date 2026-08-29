@@ -1905,7 +1905,7 @@ export const rexInfernus: MapData = {
               locations: [
                 {
                   position: { x: 70.4, y: 40.8 },
-                  text: "**Face tile** — interact with it, then go prone on it and take substantial zombie damage until you are downed. This opens the tile.",
+                  text: "**Face tile** — interact with it, then take some damage and apply an armour plate (the armour plate is the trigger). This opens the tile.",
                   revealImages: [
                     "/images/easteregg/rex-infernus/20260822192706_1.jpg",
                     "/images/easteregg/rex-infernus/20260822193204_1.jpg",
@@ -2061,7 +2061,7 @@ export const rexInfernus: MapData = {
               id: "s5-caltheris-face-tile",
               title: "Caltheris: The Face Tile and Shard Reflector",
               instruction:
-                "After breaking Caltheris' shackle, remain in Caltheris' chamber and find the floor tile with the **face** on it.\n\n- **Stand on the plate** and interact with it.\n- **Stay on the plate** and **aim down sights at the Mystery Box** for **15-20 seconds**.\n\nThe tile slides away and reveals another **mirror reflector**.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the mirror with it.\n\nYou need the Mystery Box in view from the plate, so where the box currently sits matters. Do not step off the plate while holding ADS — the timer is on standing there aiming at it.",
+                "After breaking Caltheris' shackle, remain in Caltheris' chamber and find the floor tile with the **face** on it.\n\n- **Stand on the plate** and interact with it.\n- **Stay on the plate** and **aim down sights** for **15-20 seconds**.\n\nThe tile slides away and reveals another **mirror reflector**.\n\n- Fully charge **Cyclone Shot** (hold fire).\n- Shoot the mirror with it.\n\nYou need the Mystery Box in view from the plate, so where the box currently sits matters. Do not step off the plate while holding ADS — the timer is on standing there aiming at it.",
               solidMarkers: true,
               locations: [
                 {
